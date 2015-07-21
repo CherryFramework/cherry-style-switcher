@@ -1,0 +1,204 @@
+.panel {
+  width: 350px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: -350px;
+  bottom: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #323232;
+  -moz-transition: all, 0.3s, easy-in;
+  -o-transition: all, 0.3s, easy-in;
+  -webkit-transition: all, 0.3s, easy-in;
+  transition: all, 0.3s, easy-in;
+}
+.admin-bar .panel {
+  padding-top: 40px;
+}
+.panel .panel-inner {
+  height: 100%;
+  padding: 0 0 0 25px;
+  position: relative;
+  z-index: 100;
+  box-sizing: border-box;
+  background-color: #323232;
+}
+.panel.open {
+  right: 0;
+}
+.panel .panel-btn {
+  display: block;
+  margin-top: -25px;
+  position: absolute;
+  z-index: 90;
+  top: 50%;
+  left: -49px;
+}
+.panel .panel-btn:hover {
+  cursor: pointer;
+}
+.panel .panel-btn .fa {
+  display: block;
+  width: 49px;
+  height: 50px;
+  position: relative;
+  z-index: 90;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  background-color: #323232;
+}
+.panel .panel-btn:before {
+  width: 80%;
+  max-width: 300px;
+  height: 20%;
+  position: absolute;
+  z-index: 70;
+  bottom: 5px;
+  left: 10px;
+  content: ' ';
+  -moz-transform: rotate(-6deg);
+  -ms-transform: rotate(-6deg);
+  -webkit-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+  -moz-box-shadow: rgba(0, 0, 0, 0.7) 0 10px 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 10px 6px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0 10px 6px;
+}
+.panel .panel-container {
+  margin-top: 20px;
+  margin-right: 25px;
+}
+.panel .panel-container .title {
+  margin: 0 5px 12px 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+.panel .panel-container .panel-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.panel .panel-container .panel-list {
+  *zoom: 1;
+}
+.panel .panel-container .panel-list:before, .panel .panel-container .panel-list:after {
+  display: table;
+  content: '';
+}
+.panel .panel-container .panel-list:after {
+  clear: both;
+}
+.panel .panel-container .panel-list li {
+  margin: 1px;
+  padding: 3px;
+  float: left;
+  border: 1px solid #323232;
+  -moz-transition: all, 0.3s, easy-in;
+  -o-transition: all, 0.3s, easy-in;
+  -webkit-transition: all, 0.3s, easy-in;
+  transition: all, 0.3s, easy-in;
+}
+.panel .panel-container .panel-list li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+}
+.panel .panel-container .panel-list li a img {
+  display: block;
+  width: 140px;
+  height: 100px;
+  background: #000;
+}
+.panel .panel-container .panel-list li:hover, .panel .panel-container .panel-list li:active, .panel .panel-container .panel-list li.active {
+  cursor: pointer;
+  border: 1px solid #515151;
+}
+.panel .panel-container .panel-list li .new {
+  display: block;
+  width: 100%;
+  width: 70px;
+  height: 20px;
+  position: absolute;
+  top: 7px;
+  right: -17px;
+  font-size: 11px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #333;
+  background-color: #feea3a;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.panel .panel-container .panel-list.skins a {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+
+.preloader .snippet {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-animation: spin 2s linear infinite;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* Scroll */
+.mCSB_inside > .mCSB_container {
+  margin-right: 0;
+}
+
+.mCSB_scrollTools {
+  z-index: 100;
+  right: 6px;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #464646;
+}

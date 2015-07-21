@@ -1,0 +1,174 @@
+$bg: #323232;
+
+.panel {
+    width: 350px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: -350px;
+    bottom: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: $bg;
+
+    @include transition(all, .3s, easy-in);
+    .admin-bar & {
+        padding-top: 40px;
+    }
+    .panel-inner {
+        height: 100%;
+        padding: 0 0 0 25px;
+        position: relative;
+        z-index: 100;
+        box-sizing: border-box;
+        background-color: $bg;
+    }
+    &.open {
+        right: 0;
+    }
+    .panel-btn {
+        display: block;
+        margin-top: -25px;
+        position: absolute;
+        z-index: 90;
+        top: 50%;
+        left: -49px;
+        &:hover {
+            cursor: pointer;
+        }
+        .fa {
+            display: block;
+            width: 49px;
+            height: 50px;
+            position: relative;
+            z-index: 90;
+            font-size: 16px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            background-color: $bg;
+        }
+        &:before {
+            width: 80%;
+            max-width: 300px;
+            height: 20%;
+            position: absolute;
+            z-index: 70;
+            bottom: 5px;
+            left: 10px;
+            content: ' ';
+
+            @include rotate(-6deg);
+            @include box-shadow(rgba(0, 0, 0, .7) 0 10px 6px);
+        }
+    }
+    .panel-container {
+        margin-top: 20px;
+        margin-right: 25px;
+        .title {
+            margin: 0 5px 12px 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .panel-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            @include clearfix;
+            li {
+                margin: 1px;
+                padding: 3px;
+                float: left;
+                border: 1px solid $bg;
+
+                @include transition(all, .3s, easy-in);
+                a {
+                    display: block;
+                    position: relative;
+                    text-decoration: none;
+                    outline: none;
+                    img {
+                        display: block;
+                        width: 140px;
+                        height: 100px;
+                        background: #000;
+                    }
+                }
+                &:hover,
+                &:active,
+                &.active {
+                    cursor: pointer;
+                    border: 1px solid #515151;
+                }
+                .new {
+                    display: block;
+                    width: 100%;
+                    width: 70px;
+                    height: 20px;
+                    position: absolute;
+                    top: 7px;
+                    right: -17px;
+                    font-size: 11px;
+                    line-height: 20px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: #333;
+                    background-color: #feea3a;
+
+                    @include rotate(45deg);
+                }
+            }
+            &.skins {
+                a {
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+.preloader {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+}
+
+.preloader .snippet {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include animation(spin 2s linear infinite);
+}
+
+@include keyframes(spin) {
+    100% {
+        @include rotate(360deg);
+    }
+}
+
+/* Scroll */
+.mCSB_inside > .mCSB_container {
+    margin-right: 0;
+}
+.mCSB_scrollTools {
+    z-index: 100;
+    right: 6px;
+}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #464646;
+}

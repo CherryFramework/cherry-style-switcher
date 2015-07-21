@@ -1,0 +1,14 @@
+/* ----- Header ----- */
+#header {
+    width: 100%;
+}
+/* ----- Content ----- */
+#content > .container,
+#content > .container-fluid {
+    width: 100%;
+}
+/* ----- Footer ----- */
+#footer {
+    width: 100%;
+    /*overflow: hidden;*/
+}
