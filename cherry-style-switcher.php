@@ -221,7 +221,25 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		}
 
 		public function display_panel() {
-			if ($this->isShow) require_once( CHERRY_STYLE_SWITCHER_DIR . 'views/panel.php' );
+
+			if (is_user_logged_in())
+			{
+				$user_info = wp_get_current_user();
+				$access_roles = cherry_get_option( 'access-frontend-panel' );
+
+				if (isset($user_info->roles) && !empty($user_info->roles))
+				{
+					$role_user = $user_info->roles[0];
+
+					if (in_array($role_user, $access_roles))
+					{
+						if ( $this->isShow )
+						{
+							require_once( CHERRY_STYLE_SWITCHER_DIR . 'views/panel.php' );
+						}
+					}
+				}
+			}
 		}
 	}
 

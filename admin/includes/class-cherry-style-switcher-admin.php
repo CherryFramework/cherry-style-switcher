@@ -134,6 +134,21 @@ class Cherry_Style_Switcher_Admin
             );
         }
 
+	    $style_switcher_options['access-frontend-panel'] = array(
+		    'type'			=> 'select',
+		    'title'			=> __('Visible To:', 'cherry-style-switcher'),
+		    'label'			=> '',
+		    'description'	=> '',
+//		    'hint'			=>  array(
+//			    'type'		=> 'text',
+//			    'content'	=> __('Select box with multiple select capability.', 'cherry-style-switcher'),
+//		    ),
+		    'multiple'		=> true,
+		    'value'			=> array('administrator'),
+		    'class'			=> 'cherry-multi-select',
+		    'options'		=> $this->_get_roles()
+	    );
+
         $sections['style-switcher-section'] = array(
             'name' => __('Style Switcher', 'cherry-style-switcher'),
             'icon' => 'dashicons dashicons-art',
@@ -143,6 +158,28 @@ class Cherry_Style_Switcher_Admin
 
         return $sections;
     }
+
+	/**
+	 * Get all roles
+	 *
+	 * @return array
+	 */
+	private function _get_roles()
+	{
+		$roles = array();
+		global $wp_roles;
+		$all_roles = $wp_roles->roles;
+
+		if (isset($all_roles) && !empty($all_roles))
+		{
+			foreach ($all_roles as $role => $value)
+			{
+				$roles[$role] = $value['name'];
+			}
+		}
+
+		return $roles;
+	}
 
 
     /**
