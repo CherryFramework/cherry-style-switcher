@@ -68,8 +68,8 @@ class Cherry_Style_Switcher_Admin
         $style_switcher_options = array();
         $isShow = cherry_get_option('show') === 'true';
 
-        $listSkins  = $this->scanDir('includes/assets/css/skins');
-        $listNav    = $this->scanDir('includes/assets/css/nav');
+        $listSkins  = $this->scanDir('/css/skins');
+        $listNav    = $this->scanDir('/css/nav');
 
         $style_switcher_options['show'] = array(
             'type' => 'switcher',
@@ -90,17 +90,17 @@ class Cherry_Style_Switcher_Admin
             {
                 $optionSkins[$skin] = array(
                     'label' => '',
-                    'img_src' => CHERRY_STYLE_SWITCHER_URI . '/includes/assets/img/skins/' . $skin . '.jpg'
+                    'img_src' => CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/img/skins/' . $skin . '.jpg'
                 );
             }
 
             $style_switcher_options['skin'] = array(
                 'type' => 'radio',
                 'title' => __('Skin', 'cherry-style-switcher'),
-                'hint' => array(
-                    'type' => 'text',
-                    'content' => 'Опция изменяет стиль темы'
-                ),
+//                'hint' => array(
+//                    'type' => 'text',
+//                    'content' => 'Опция изменяет стиль темы'
+//                ),
                 'value' => 'skin-default',
                 'class' => 'test',
                 'display_input' => false,
@@ -116,17 +116,17 @@ class Cherry_Style_Switcher_Admin
             {
                 $optionNav[$nav] = array(
                     'label' => '',
-                    'img_src' => CHERRY_STYLE_SWITCHER_URI . '/includes/assets/img/nav/' . $nav . '.png'
+                    'img_src' => CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/img/nav/' . $nav . '.png'
                 );
             }
 
             $style_switcher_options['nav'] = array(
                 'type' => 'radio',
                 'title' => __('Navigation', 'cherry-style-switcher'),
-                'hint' => array(
-                    'type' => 'text',
-                    'content' => 'Опция изменяет рассположение навигации'
-                ),
+//                'hint' => array(
+//                    'type' => 'text',
+//                    'content' => 'Опция изменяет рассположение навигации'
+//                ),
                 'value' => 'nav-type1',
                 'class' => '',
                 'display_input' => FALSE,
@@ -211,7 +211,7 @@ class Cherry_Style_Switcher_Admin
     {
         $listFiles = array();
 
-        $files = scandir(CHERRY_STYLE_SWITCHER_DIR . $pathDir);
+        $files = scandir(CHERRY_STYLE_SWITCHER_UPLOADS_DIR . $pathDir);
 
         foreach ($files as $file)
         {
