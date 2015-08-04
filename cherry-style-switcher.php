@@ -224,6 +224,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function deactivation() {
+//			$setting = get_option( 'cherry-options' );
+//			pr(get_option( $setting['id'] ));
 		}
 
 		/**
@@ -248,7 +250,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				$user_info = wp_get_current_user();
 				$access_roles = cherry_get_option( 'access-frontend-panel' );
 
-				if (isset($user_info->roles) && !empty($user_info->roles))
+				if (isset($user_info->roles) && !empty($user_info->roles)
+				    && is_array($access_roles) && !empty($access_roles))
 				{
 					$role_user = $user_info->roles[0];
 
