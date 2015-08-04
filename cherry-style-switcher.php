@@ -110,7 +110,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			 *
 			 * @since 1.0.0
 			 */
-			define('CHERRY_STYLE_SWITCHER_UPLOADS', '/uploads/cherry-style-switcher-uploads');
+			define('CHERRY_STYLE_SWITCHER_UPLOADS', '/uploads/cherry-style-switcher');
 
 			/**
 			 * Set constant path to the plugin uploads URL.
@@ -125,23 +125,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			 * @since 1.0.0
 			 */
 			define('CHERRY_STYLE_SWITCHER_UPLOADS_DIR', WP_CONTENT_DIR . CHERRY_STYLE_SWITCHER_UPLOADS);
-
-//			vd(CHERRY_STYLE_SWITCHER_UPLOADS, false);
-//			vd(CHERRY_STYLE_SWITCHER_UPLOADS_URL, false);
-//			vd(CHERRY_STYLE_SWITCHER_UPLOADS_DIR);
-
-
-//			if (function_exists('wp_upload_dir'))
-//			{
-//				vd(WP_CONTENT_URL, false);
-//				vd(WP_CONTENT_DIR);
-//				vd(wp_upload_dir(''));
-//			}
-//			else
-//			{
-//				var_dump('does not exist function wp_upload_dir');
-//			}
-
 		}
 
 		/**
@@ -207,12 +190,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
                 }
             }
 
-//            wp_enqueue_style( 'scrollbar', plugins_url( 'includes/assets/css/jquery.mcustomscrollbar.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-//            wp_enqueue_style( 'cherry-style-switcher', plugins_url( 'includes/assets/css/style.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-//            wp_enqueue_style( 'style-switcher-nav', plugins_url( 'includes/assets/css/nav/' . $nav . '.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-//            wp_enqueue_style( 'cherry-dynamic', plugins_url( 'includes/assets/css/skins/' . $skin . '.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-//            wp_enqueue_style( 'style-switcher-layout', plugins_url( 'includes/assets/css/layout/wide.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-
             wp_enqueue_style( 'scrollbar', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/jquery.mcustomscrollbar.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
             wp_enqueue_style( 'cherry-style-switcher', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/style.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
             wp_enqueue_style( 'style-switcher-nav', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/nav/' . $nav . '.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
@@ -231,13 +208,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			wp_enqueue_script( 'scrollba', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/jquery.mcustomscrollbar.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 			wp_enqueue_script( 'mousewheel', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/jquery.mousewheel.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 			wp_enqueue_script( 'cherry-style-switcher', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/script.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-
-//			wp_enqueue_script( 'modernizr', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/modernizr-2.7.1.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-//			wp_enqueue_script( 'cookie', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/jquery.cookie.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-//			wp_enqueue_script( 'scrollba', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/jquery.mcustomscrollbar.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-//			wp_enqueue_script( 'mousewheel', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/libs/jquery.mousewheel.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-//			wp_enqueue_script( 'cherry-style-switcher', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/script.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
-
 		}
 
 		/**
