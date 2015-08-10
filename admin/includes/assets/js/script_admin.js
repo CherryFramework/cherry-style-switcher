@@ -32,7 +32,7 @@ jQuery(function ($) {
         var
             serializeObject = $('#cherry-options').serializeObject(), data = {
                 action: 'cherry_save_options',
-                post_array: serializeObject.cherry,
+                post_array: serializeObject.cherry
             }
             ;
 

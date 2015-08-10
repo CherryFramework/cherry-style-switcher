@@ -104,6 +104,27 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			 * @since 1.0.0
 			 */
 			define( 'CHERRY_STYLE_SWITCHER_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+
+			/**
+			 * Set constant path to the plugin uploads PATH.
+			 *
+			 * @since 1.0.0
+			 */
+			define('CHERRY_STYLE_SWITCHER_UPLOADS', '/uploads/cherry-style-switcher');
+
+			/**
+			 * Set constant path to the plugin uploads URL.
+			 *
+			 * @since 1.0.0
+			 */
+			define('CHERRY_STYLE_SWITCHER_UPLOADS_URL', WP_CONTENT_URL . CHERRY_STYLE_SWITCHER_UPLOADS);
+
+			/**
+			 * Set constant path to the plugin uploads DIR.
+			 *
+			 * @since 1.0.0
+			 */
+			define('CHERRY_STYLE_SWITCHER_UPLOADS_DIR', WP_CONTENT_DIR . CHERRY_STYLE_SWITCHER_UPLOADS);
 		}
 
 		/**
@@ -169,11 +190,11 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
                 }
             }
 
-            wp_enqueue_style( 'scrollbar', plugins_url( 'includes/assets/css/jquery.mcustomscrollbar.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-            wp_enqueue_style( 'cherry-style-switcher', plugins_url( 'includes/assets/css/style.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-            wp_enqueue_style( 'style-switcher-nav', plugins_url( 'includes/assets/css/nav/' . $nav . '.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-            wp_enqueue_style( 'cherry-dynamic', plugins_url( 'includes/assets/css/skins/' . $skin . '.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
-            wp_enqueue_style( 'style-switcher-layout', plugins_url( 'includes/assets/css/layout/wide.css', __FILE__ ), array(), CHERRY_STYLE_SWITCHER_VERSION );
+            wp_enqueue_style( 'scrollbar', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/jquery.mcustomscrollbar.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
+            wp_enqueue_style( 'cherry-style-switcher', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/style.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
+            wp_enqueue_style( 'style-switcher-nav', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/nav/' . $nav . '.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
+            wp_enqueue_style( 'cherry-dynamic', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/skins/' . $skin . '.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
+            wp_enqueue_style( 'style-switcher-layout', CHERRY_STYLE_SWITCHER_UPLOADS_URL . '/css/layout/wide.css'   , array(), CHERRY_STYLE_SWITCHER_VERSION );
 		}
 
 		/**
@@ -203,6 +224,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function deactivation() {
+//			$setting = get_option( 'cherry-options' );
+//			pr(get_option( $setting['id'] ));
 		}
 
 		/**
@@ -221,7 +244,26 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		}
 
 		public function display_panel() {
-			if ($this->isShow) require_once( CHERRY_STYLE_SWITCHER_DIR . 'views/panel.php' );
+
+			if (is_user_logged_in())
+			{
+				$user_info = wp_get_current_user();
+				$access_roles = cherry_get_option( 'access-frontend-panel' );
+
+				if (isset($user_info->roles) && !empty($user_info->roles)
+				    && is_array($access_roles) && !empty($access_roles))
+				{
+					$role_user = $user_info->roles[0];
+
+					if (in_array($role_user, $access_roles))
+					{
+						if ( $this->isShow )
+						{
+							require_once( CHERRY_STYLE_SWITCHER_DIR . 'views/panel.php' );
+						}
+					}
+				}
+			}
 		}
 	}
 
