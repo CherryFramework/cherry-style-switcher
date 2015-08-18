@@ -259,7 +259,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 					{
 						if ( $this->isShow )
 						{
-							require_once( CHERRY_STYLE_SWITCHER_DIR . 'views/panel.php' );
+							require_once( CHERRY_STYLE_SWITCHER_UPLOADS_DIR . '/views/panel.php' );
 						}
 					}
 				}
