@@ -77,6 +77,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 
 			// Display panel
 			add_action( 'wp_head', array($this, 'display_panel') );
+
+			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 		}
 
 		/**
@@ -174,7 +176,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		function admin() {
 			if ( is_admin() ) {
-				require_once( CHERRY_STYLE_SWITCHER_DIR . 'admin/includes/class-cherry-style-switcher-admin.php' );
+				// include
 			}
 		}
 
@@ -184,7 +186,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_styles() {
-			$this->isShow = cherry_get_option('show') === 'true';
+			//$this->isShow = cherry_get_option('panel_show') === 'true';
 			wp_enqueue_style( 'cherry-style-switcher', CHERRY_STYLE_SWITCHER_URI . 'includes/assets/css/style.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
 		}
 
@@ -194,13 +196,93 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( cherry_get_option('show')  === 'true' ){
+			if ( cherry_get_option('panel_show')  === 'true' ){
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'cherry-style-switcher-init', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/init.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 			}
 		}
 
+		/**
+		 * Adds `Style Switcher settings` tab with options.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $sections
+		 */
+		public function add_cherry_options( $sections ){
+			$style_switcher_options = array();
+
+			$style_switcher_options['panel_show'] = array(
+				'type' => 'switcher',
+				'title' => __('Style Switcher', 'cherry-style-switcher'),
+				'hint' => array(
+					'type' => 'text',
+					'content' => __('Enable/disable displaying of Style Switcher on site.', 'cherry-style-switcher'),
+				),
+				'value' => 'true',
+				'class' => 'cherry-switcher-panel',
+				'toggle'		=> array(
+					'true_toggle'	=> __( 'Enabled', 'cherry' ),
+					'false_toggle'	=> __( 'Disabled', 'cherry' ),
+					'true_slave'	=> 'style-switcher-true-slave',
+					'false_slave'	=> 'style-switcher-false-slave'
+				),
+			);
+
+			$style_switcher_options['access-frontend-panel'] = array(
+				'type'			=> 'select',
+				'title'			=> __('Visible To:', 'cherry-style-switcher'),
+				'label'			=> '',
+				'description'	=> '',
+				'multiple'		=> true,
+				'value'			=> array('administrator'),
+				'class'			=> 'cherry-multi-select',
+				'options'		=> $this->_get_roles(),
+				'master'		=> 'style-switcher-true-slave',
+			);
+
+			$style_switcher_options['preset-user-css'] = array(
+				'type'         => 'ace-editor',
+				'title'        => __( 'Custom style CSS', 'cherry' ),
+				'description'  => __( 'Define style CSS styling.', 'cherry-style-switcher' ),
+				'editor_mode'  => 'css',
+				'editor_theme' => 'monokai',
+				'value'        => '',
+				'master'		=> 'style-switcher-true-slave',
+			);
+
+			$sections['style-switcher-section'] = array(
+				'name' => __('Style Switcher', 'cherry-style-switcher'),
+				'icon' => 'dashicons dashicons-art',
+				'priority' => 130,
+				'options-list' => $style_switcher_options,
+			);
+
+			return $sections;
+		}
+
+		/**
+		 * Get all roles
+		 *
+		 * @return array
+		 */
+		private function _get_roles()
+		{
+			$roles = array();
+			global $wp_roles;
+			$all_roles = $wp_roles->roles;
+
+			if (isset($all_roles) && !empty($all_roles))
+			{
+				foreach ($all_roles as $role => $value)
+				{
+					$roles[$role] = $value['name'];
+				}
+			}
+
+			return $roles;
+		}
 		/**
 		 * On plugin activation.
 		 *
@@ -234,16 +316,10 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			if ( is_user_logged_in() ){
 				$user_info = wp_get_current_user();
 				$access_roles = cherry_get_option( 'access-frontend-panel' );
-
-				if (isset($user_info->roles) && !empty($user_info->roles)
-					&& is_array($access_roles) && !empty($access_roles))
-				{
+				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
 					$role_user = $user_info->roles[0];
-
-					if (in_array($role_user, $access_roles))
-					{
-						if ( $this->isShow )
-						{
+					if (in_array($role_user, $access_roles)){
+						if ( cherry_get_option('panel_show') === 'true' ){
 							$this->switcher_panel->panel_render();
 							//Cherry_Preset_Switcher_Panel::panel_render();
 						}
