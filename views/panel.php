@@ -1,18 +1,4 @@
 <?php
-
-/**
- * Plugin Name: Cherry Style Switcher
- * Plugin URI:  http://www.cherryframework.com/
- * Description: Cherry style switcher plugin for WordPress.
- * Version:     1.0.0
- * Author:      Cherry Team
- * Author URI:  http://www.cherryframework.com/
- * Text Domain: cherry-style-switcher
- * License:     GPL-3.0
- * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
- * Domain Path: /languages
- */
-
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
