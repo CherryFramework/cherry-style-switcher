@@ -45,14 +45,6 @@ class Cherry_Style_Switcher_Admin
 			TRUE
 		);
 
-		$isShow = FALSE;
-
-		if (function_exists('cherry_get_option'))
-		{
-			$isShow = cherry_get_option('show') === 'true';
-		}
-
-		wp_localize_script( 'cherry-switcher-script-admin', 'cherryOptions', array('isShow' => $isShow) );
 	}
 
 	/**
@@ -64,7 +56,7 @@ class Cherry_Style_Switcher_Admin
 	 */
 	public function add_cherry_options($sections){
 		$style_switcher_options = array();
-		$isShow = cherry_get_option('show') === 'true';
+		//$isShow = cherry_get_option('show') === 'true';
 
 		//$listSkins  = $this->scanDir('/css/skins');
 		//$listNav    = $this->scanDir('/css/nav');
