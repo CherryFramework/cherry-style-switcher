@@ -200,6 +200,9 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'cherry-style-switcher-init', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/init.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
+
+				//ajax js object preset_import_ajax
+				wp_localize_script( 'cherry-style-switcher-init', 'preset_import_ajax', array( 'url' => admin_url('admin-ajax.php') ) );
 			}
 		}
 

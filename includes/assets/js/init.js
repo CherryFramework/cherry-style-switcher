@@ -104,7 +104,7 @@
 
 			this.ajaxImportPresetRequest = jQuery.ajax({
 				type: 'POST',
-				url: ajaxurl,
+				url: preset_import_ajax.url,
 				data: {
 					action: 'cherry_preset_import',
 					group: group_id,
