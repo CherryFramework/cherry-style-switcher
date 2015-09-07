@@ -49,7 +49,8 @@
 					$cover.hide();
 				}
 
-				self.select_current_presets( $.parseJSON( localStorage.getItem( 'active_presets' ) ) );
+				self.active_presets_object = $.parseJSON( localStorage.getItem( 'active_presets' ) );
+				self.select_current_presets( self.active_presets_object );
 			}
 
 			$preset_list.on('click', function(){
@@ -61,6 +62,7 @@
 
 				// update active_presets_object
 				self.active_presets_object[ data_group ] = data_preset;
+
 				// select current item
 				self.select_current_presets( self.active_presets_object );
 
@@ -100,7 +102,6 @@
 			$preloader.delay(200).fadeOut('slow');
 		},
 		select_current_presets: function ( active_presets ) {
-			console.log(active_presets);
 			// set localStorage active_presets
 			localStorage.setItem( 'active_presets', $.toJSON( active_presets ) );
 
