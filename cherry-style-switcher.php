@@ -199,6 +199,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			if ( cherry_get_option('panel_show')  === 'true' ){
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
+				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'cherry-style-switcher-init', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/init.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 
 				//ajax js object preset_import_ajax
