@@ -37,7 +37,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		/**
 		 * @var bool
 		 */
-		public $isShow;
+		public $isShow = true;
 
 		/**
 		 * @var object
@@ -79,6 +79,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			add_action( 'wp_head', array($this, 'display_panel') );
 
 			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
+
 		}
 
 		/**
@@ -158,6 +159,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		function panel_init() {
 
 			$this->switcher_panel = new Cherry_Style_Switcher_Panel();
+
+			$this->isShow = apply_filters( 'cherry_preset_switcher_show_panel', true );
 		}
 
 		/**
@@ -317,12 +320,17 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		}
 
 		public function display_panel() {
+
+			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table'){
+				return false;
+			}
+
 			if ( is_user_logged_in() ){
 				$user_info = wp_get_current_user();
 				$access_roles = cherry_get_option( 'access-frontend-panel' );
 				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
 					$role_user = $user_info->roles[0];
-					if (in_array($role_user, $access_roles)){
+					if ( in_array( $role_user, $access_roles ) ){
 						if ( cherry_get_option('panel_show') === 'true' ){
 							$this->switcher_panel->panel_render();
 							//Cherry_Preset_Switcher_Panel::panel_render();
