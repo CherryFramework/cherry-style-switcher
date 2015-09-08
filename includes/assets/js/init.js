@@ -49,8 +49,10 @@
 					$cover.hide();
 				}
 
-				self.active_presets_object = $.parseJSON( localStorage.getItem( 'active_presets' ) );
-				self.select_current_presets( self.active_presets_object );
+				if( localStorage.getItem( 'active_presets' ) !== 'null' ){
+					self.active_presets_object = $.parseJSON( localStorage.getItem( 'active_presets' ) );
+					self.select_current_presets( self.active_presets_object );
+				}
 			}
 
 			$preset_list.on('click', function(){

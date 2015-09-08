@@ -100,7 +100,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 			$html .= '</div>';
 				$html .= '<div class="panel-inner">';
 				$html .= apply_filters( 'cherry_style_panel_before', '' );
-				$html .= '<h3 class="theme-name"><span>' . __('Theme', 'cherry-style-switcher') . '</span>' . get_current_theme() . '</h3>';
+				$html .= '<h3 class="theme-name"><span>' . __('Theme', 'cherry-style-switcher') . '</span>' . wp_get_theme() . '</h3>';
 					foreach ( $this->default_settings as $group_key => $group_setting ) {
 						$html .= '<div class="group-wrap">';
 						$html .= '<h5 class="group-name"><span>' . $group_setting['group_name'] . '</span></h5>';
@@ -220,8 +220,10 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 
 					$file_content = self::get_contents( $file_name );
 
+					if( 'string' !== gettype( $file_content ) ){
+						wp_send_json( array( 'type' => 'error' ) );
+					}
 					$import_options = json_decode( $file_content, true );
-
 
 					if ( ! is_array( $import_options ) || empty( $import_options ) ) {
 						wp_send_json( array( 'type' => 'error' ) );

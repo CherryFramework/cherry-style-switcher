@@ -178,6 +178,9 @@
 body.cover{
 	overflow: hidden;
 }
+.ui-helper-hidden-accessible{
+	display: none;
+}
 .site-preloader {
 	position: fixed;
 	z-index: 10000;
