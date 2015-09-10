@@ -194,20 +194,42 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function is_demo_mode() {
+			if ( !is_user_logged_in() ){
+				if( 'true' === cherry_get_option('demo-mode') ){
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/**
+		 * Is panel enabled
+		 *
+		 * @return boolean show panel
+		 *
+		 * @since 1.0.0
+		 */
+		public static function is_panel_show() {
+			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table'){
+				return false;
+			}
+
 			if ( is_user_logged_in() ){
 				$user_info = wp_get_current_user();
-				$access_roles = cherry_get_option( 'access-demo-mode' );
+				$access_roles = cherry_get_option( 'access-frontend-panel' );
 				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
 					$role_user = $user_info->roles[0];
 					if ( in_array( $role_user, $access_roles ) ){
-						if( 'true' === cherry_get_option('demo-mode') ){
+						if ( 'true' === cherry_get_option('panel-show') ){
 							return true;
 						}
 					}
 				}
 			}
+
 			return false;
 		}
+
 		/**
 		 * Loads the translation files.
 		 *
@@ -234,7 +256,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_styles() {
-			//$this->isShow = cherry_get_option('panel_show') === 'true';
 			wp_enqueue_style( 'cherry-style-switcher', CHERRY_STYLE_SWITCHER_URI . 'includes/assets/css/style.css', array(), CHERRY_STYLE_SWITCHER_VERSION );
 		}
 
@@ -309,7 +330,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				'title' => __('Demo mode', 'cherry-style-switcher'),
 				'hint' => array(
 					'type' => 'text',
-					'content' => __('Enable/disable demo mode.', 'cherry-style-switcher'),
+					'content' => __('Enable/disable demo mode. Demo mode is used for not logged users (guests)', 'cherry-style-switcher'),
 				),
 				'value' => 'false',
 				'class' => 'cherry-switcher-panel',
@@ -317,18 +338,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 					'true_toggle'	=> __( 'Enabled', 'cherry' ),
 					'false_toggle'	=> __( 'Disabled', 'cherry' ),
 				),
-				'master'		=> 'style-switcher-true-slave',
-			);
-
-			$style_switcher_options['access-demo-mode'] = array(
-				'type'			=> 'select',
-				'title'			=> __('Demo mode To:', 'cherry-style-switcher'),
-				'label'			=> '',
-				'description'	=> '',
-				'multiple'		=> true,
-				'value'			=> array('administrator'),
-				'class'			=> 'cherry-multi-select',
-				'options'		=> $this->_get_roles(),
 				'master'		=> 'style-switcher-true-slave',
 			);
 
@@ -391,24 +400,16 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			return self::$instance;
 		}
 
+		/**
+		 * Render the panel
+		 *
+		 * @since  1.0.0
+		 *
+		 * @return html string
+		 */
 		public function display_panel() {
-
-			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table'){
-				return false;
-			}
-
-			if ( is_user_logged_in() ){
-				$user_info = wp_get_current_user();
-				$access_roles = cherry_get_option( 'access-frontend-panel' );
-				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
-					$role_user = $user_info->roles[0];
-					if ( in_array( $role_user, $access_roles ) ){
-						if ( 'true' === cherry_get_option('panel-show') ){
-							$this->switcher_panel->panel_render();
-							//Cherry_Preset_Switcher_Panel::panel_render();
-						}
-					}
-				}
+			if( self::is_panel_show() ){
+				$this->switcher_panel->panel_render();
 			}
 		}
 	}
