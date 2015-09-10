@@ -245,6 +245,12 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 								}
 						}
 					}
+
+					if( Cherry_Style_Switcher::is_demo_mode() ){
+						$_SESSION['demo_options_storage'] = $result;
+						wp_send_json( array( 'type' => 'success' ) );
+					}
+
 					update_option( $settings['id'], $result );
 				}
 

@@ -80,6 +80,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 
 			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 
+			add_filter('cherry_option_value_source_array', array( $this, 'value_source_array' ) );
+
 		}
 
 		/**
@@ -158,11 +160,54 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		function panel_init() {
 
-			$this->switcher_panel = new Cherry_Style_Switcher_Panel();
+			if( self::is_demo_mode() ){
+				$settings = get_option( 'cherry-options' );
+				$current_options = get_option( $settings['id'] );
+				session_start();
+				if ( !isset( $_SESSION['demo_options_storage'] ) ){
+					$_SESSION['demo_options_storage'] = $current_options;
+				}
+			}
 
+			$this->switcher_panel = new Cherry_Style_Switcher_Panel();
 			$this->isShow = apply_filters( 'cherry_preset_switcher_show_panel', true );
 		}
 
+		/**
+		 * Value source array
+		 *
+		 * @since 1.0.0
+		 */
+		function value_source_array( $options_source_array ) {
+			if ( isset( $_SESSION['demo_options_storage'] ) ){
+				$options_source_array = $_SESSION['demo_options_storage'];
+			}
+
+			return $options_source_array;
+		}
+
+		/**
+		 * Is demo state enabled
+		 *
+		 * @return boolean demo state
+		 *
+		 * @since 1.0.0
+		 */
+		public static function is_demo_mode() {
+			if ( is_user_logged_in() ){
+				$user_info = wp_get_current_user();
+				$access_roles = cherry_get_option( 'access-demo-mode' );
+				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
+					$role_user = $user_info->roles[0];
+					if ( in_array( $role_user, $access_roles ) ){
+						if( 'true' === cherry_get_option('demo-mode') ){
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
 		/**
 		 * Loads the translation files.
 		 *
@@ -199,7 +244,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( cherry_get_option('panel_show')  === 'true' ){
+			if ( cherry_get_option('panel-show')  === 'true' ){
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
@@ -220,7 +265,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		public function add_cherry_options( $sections ){
 			$style_switcher_options = array();
 
-			$style_switcher_options['panel_show'] = array(
+			$style_switcher_options['panel-show'] = array(
 				'type' => 'switcher',
 				'title' => __('Style Switcher', 'cherry-style-switcher'),
 				'hint' => array(
@@ -250,12 +295,40 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			);
 
 			$style_switcher_options['preset-user-css'] = array(
-				'type'         => 'ace-editor',
-				'title'        => __( 'Custom style CSS', 'cherry' ),
-				'description'  => __( 'Define style CSS styling.', 'cherry-style-switcher' ),
-				'editor_mode'  => 'css',
-				'editor_theme' => 'monokai',
-				'value'        => '',
+				'type'			=> 'ace-editor',
+				'title'			=> __( 'Custom style CSS', 'cherry' ),
+				'description'	=> __( 'Define style CSS styling.', 'cherry-style-switcher' ),
+				'editor_mode'	=> 'css',
+				'editor_theme'	=> 'monokai',
+				'value'			=> '',
+				'master'		=> 'style-switcher-true-slave',
+			);
+
+			$style_switcher_options['demo-mode'] = array(
+				'type' => 'switcher',
+				'title' => __('Demo mode', 'cherry-style-switcher'),
+				'hint' => array(
+					'type' => 'text',
+					'content' => __('Enable/disable demo mode.', 'cherry-style-switcher'),
+				),
+				'value' => 'false',
+				'class' => 'cherry-switcher-panel',
+				'toggle'		=> array(
+					'true_toggle'	=> __( 'Enabled', 'cherry' ),
+					'false_toggle'	=> __( 'Disabled', 'cherry' ),
+				),
+				'master'		=> 'style-switcher-true-slave',
+			);
+
+			$style_switcher_options['access-demo-mode'] = array(
+				'type'			=> 'select',
+				'title'			=> __('Demo mode To:', 'cherry-style-switcher'),
+				'label'			=> '',
+				'description'	=> '',
+				'multiple'		=> true,
+				'value'			=> array('administrator'),
+				'class'			=> 'cherry-multi-select',
+				'options'		=> $this->_get_roles(),
 				'master'		=> 'style-switcher-true-slave',
 			);
 
@@ -274,8 +347,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 *
 		 * @return array
 		 */
-		private function _get_roles()
-		{
+		private function _get_roles(){
 			$roles = array();
 			global $wp_roles;
 			$all_roles = $wp_roles->roles;
@@ -331,7 +403,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
 					$role_user = $user_info->roles[0];
 					if ( in_array( $role_user, $access_roles ) ){
-						if ( cherry_get_option('panel_show') === 'true' ){
+						if ( 'true' === cherry_get_option('panel-show') ){
 							$this->switcher_panel->panel_render();
 							//Cherry_Preset_Switcher_Panel::panel_render();
 						}
