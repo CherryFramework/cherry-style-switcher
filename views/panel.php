@@ -90,9 +90,10 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		 * @return string
 		 */
 		public function panel_render(){
+			$demo_mode_class = Cherry_Style_Switcher::is_demo_mode() ? ' demo-mode-class' : '' ;
 
 			$html = '';
-			$html .= '<div class="style-switcher-panel">';
+			$html .= '<div class="style-switcher-panel' . $demo_mode_class . '">';
 			$html .= '<div class="preset-spinner">';
 				$html .= '<div class="spinner-folding-cube"><div class="spinner-cube1 spinner-cube"></div><div class="spinner-cube2 spinner-cube"></div><div class="spinner-cube4 spinner-cube"></div><div class="spinner-cube3 spinner-cube"></div></div>';
 				$html .= '<span>' . __('Applying changes...', 'cherry-style-switcher') . '</span>';
@@ -232,7 +233,10 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					// get current options array
 					$settings        = get_option( 'cherry-options' );
 					$current_options = get_option( $settings['id'] );
-					//$current_options = get_option( $settings['id'] . '_defaults' );
+
+					if( Cherry_Style_Switcher::is_demo_mode() ){
+						$current_options = $_SESSION['demo_options_storage'];
+					}
 
 					$result = array();
 

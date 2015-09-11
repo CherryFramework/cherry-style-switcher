@@ -214,7 +214,11 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				return false;
 			}
 
-			if ( is_user_logged_in() ){
+			if ( !is_user_logged_in() ){
+				if( 'true' === cherry_get_option('panel-show') && 'true' === cherry_get_option('demo-mode') ){
+					return true;
+				}
+			}else{
 				$user_info = wp_get_current_user();
 				$access_roles = cherry_get_option( 'access-frontend-panel' );
 				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
