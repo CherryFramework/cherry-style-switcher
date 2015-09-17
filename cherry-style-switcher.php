@@ -163,7 +163,9 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			if( self::is_demo_mode() ){
 				$settings = get_option( 'cherry-options' );
 				$current_options = get_option( $settings['id'] );
-				session_start();
+				if(!isset($_SESSION)){
+					session_start();
+				}
 				if ( !isset( $_SESSION['demo_options_storage'] ) ){
 					$_SESSION['demo_options_storage'] = $current_options;
 				}
