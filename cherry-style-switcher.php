@@ -81,7 +81,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 
 			add_filter('cherry_option_value_source_array', array( $this, 'value_source_array' ) );
-
 		}
 
 		/**
@@ -163,9 +162,11 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			if( self::is_demo_mode() ){
 				$settings = get_option( 'cherry-options' );
 				$current_options = get_option( $settings['id'] );
-				if(!isset($_SESSION)){
+
+				if( !session_id() ){
 					session_start();
 				}
+
 				if ( !isset( $_SESSION['demo_options_storage'] ) ){
 					$_SESSION['demo_options_storage'] = $current_options;
 				}
@@ -184,7 +185,6 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			if ( isset( $_SESSION['demo_options_storage'] ) ){
 				$options_source_array = $_SESSION['demo_options_storage'];
 			}
-
 			return $options_source_array;
 		}
 
