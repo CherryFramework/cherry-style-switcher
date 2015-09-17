@@ -182,7 +182,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function value_source_array( $options_source_array ) {
-			if ( isset( $_SESSION['demo_options_storage'] ) ){
+			$logged_in = is_user_logged_in();
+			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
 				$options_source_array = $_SESSION['demo_options_storage'];
 			}
 			return $options_source_array;
