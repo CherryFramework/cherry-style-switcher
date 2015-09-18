@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Style Switcher
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Cherry Style Switcher plugin for WordPress.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-style-switcher
@@ -94,7 +94,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			 *
 			 * @since 1.0.0
 			 */
-			define( 'CHERRY_STYLE_SWITCHER_VERSION', '1.0.0' );
+			define( 'CHERRY_STYLE_SWITCHER_VERSION', '1.0.1' );
 
 			/**
 			 * Set the slug of the plugin.
