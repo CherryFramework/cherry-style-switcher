@@ -30,6 +30,7 @@
 			var
 				self = this
 			,	$panel = $('.style-switcher-panel')
+			,	panel_width = $panel.width()
 			,	$preset_list = $('.preset-list li')
 			,	$panel_toggle = $('.panel-toggle', $panel)
 			,	$cover = $('.site-cover')
@@ -37,15 +38,22 @@
 			,	is_panel_open = 'false'
 			;
 
+
+
 			if ( this.is_local_storage_available ){
 				is_panel_open = localStorage.getItem('is_panel_open');
+				panel_width = $panel.width();
 
 				if( is_panel_open == 'true' ){
 					$panel.addClass('open');
+					$panel.css({'right':0});
+
 					$cover.show();
 					$body.addClass('cover');
 				}else{
 					$panel.removeClass('open');
+					$panel.css({'right': panel_width * -1 });
+
 					$cover.hide();
 				}
 
@@ -73,18 +81,26 @@
 
 			$('.panel-toggle').on('click', function(){
 				$panel.toggleClass('open');
+				panel_width = $panel.width();
 
 				if( $panel.hasClass('open') ){
 					localStorage.setItem('is_panel_open', 'true' );
 					$cover.fadeIn(300);
 					$body.addClass('cover');
+					$panel.css({'right':0});
 				}else{
 					localStorage.setItem('is_panel_open', 'false' );
 					$cover.fadeOut(300);
+					$panel.css({'right': panel_width * -1 });
 					$body.removeClass('cover');
 				}
 			});
-
+			CHERRY_API.variable.$window.on('resize.style_switcher_panel', function(){
+				var panel_width = $panel.width();
+				if( !$panel.hasClass('open') ){
+					$panel.css({'right': panel_width * -1 });
+				}
+			})
 			$panel.tooltip({
 				tooltipClass: "custom-tooltip-styling",
 				track: true,
@@ -145,7 +161,9 @@
 				},
 				success: function(response){
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
-					window.location.reload();
+					console.log(response);
+					document.location.replace( response.url );
+					//window.location.reload();
 				},
 				dataType: 'json'
 			});

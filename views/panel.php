@@ -211,6 +211,10 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 				$group = $_POST['group'];
 				$_wpnonce = $_POST['_wpnonce'];
 
+				//generate query arg url
+				$query_arg_url = $_SERVER['HTTP_REFERER'];
+				$query_arg_url = add_query_arg( array( 'group' => $group, 'preset' => $preset ), $query_arg_url );
+
 				$validate = check_ajax_referer( 'cherry_preset_import', $_wpnonce, false );
 				if ( ! $validate ) {
 					wp_die( __( 'Invalid request', 'cherry' ), __( 'Error. Invalid request', 'cherry' ) );
@@ -252,13 +256,13 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 
 					if( Cherry_Style_Switcher::is_demo_mode() ){
 						$_SESSION['demo_options_storage'] = $result;
-						wp_send_json( array( 'type' => 'success' ) );
+						wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 					}
 
 					update_option( $settings['id'], $result );
 				}
 
-				wp_send_json( array( 'type' => 'success' ) );
+				wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 			}
 		}
 
