@@ -38,8 +38,6 @@
 			,	is_panel_open = 'false'
 			;
 
-
-
 			if ( this.is_local_storage_available ){
 				is_panel_open = localStorage.getItem('is_panel_open');
 				panel_width = $panel.width();
