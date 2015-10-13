@@ -108,7 +108,8 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 						$html .= '<ul class="preset-list" data-group="' . $group_key . '">';
 							foreach ( $group_setting['presets'] as $preset_key => $preset_setting ) {
 								$tooltip = !empty( $preset_setting['description'] ) ? ' title="' . esc_html( $preset_setting['description'] ) .'"' : '';
-								$html .= '<li data-preset="' . $preset_key . '"' . $tooltip . '>';
+								$item_class = ( isset( $preset_setting['soon'] ) && true == $preset_setting['soon'] ) ? ' class="coming-soon"' : '';
+								$html .= '<li data-preset="' . $preset_key . '"' . $tooltip . '' . $item_class . '>';
 									$thumbnail = self::get_thumbnail( $preset_setting['thumbnail'] );
 									$html .= '<div class="inner">';
 										$html .= '<div class="thumbnail">';
