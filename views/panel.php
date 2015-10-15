@@ -214,7 +214,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 
 				//generate query arg url
 				$query_arg_url = $_SERVER['HTTP_REFERER'];
-				$query_arg_url = add_query_arg( array( 'group' => $group, 'preset' => $preset ), $query_arg_url );
+				$query_arg_url = add_query_arg( array( '_group' => $group, '_preset' => $preset ), $query_arg_url );
 
 				$validate = check_ajax_referer( 'cherry_preset_import', $_wpnonce, false );
 				if ( ! $validate ) {
