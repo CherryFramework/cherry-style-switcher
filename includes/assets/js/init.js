@@ -68,13 +68,15 @@
 				,	data_preset = $this.data('preset')
 				;
 
-				// update active_presets_object
-				self.active_presets_object[ data_group ] = data_preset;
+				if( !$this.hasClass('coming-soon') ){
+					// update active_presets_object
+					self.active_presets_object[ data_group ] = data_preset;
 
-				// select current item
-				self.select_current_presets( self.active_presets_object );
+					// select current item
+					self.select_current_presets( self.active_presets_object );
 
-				self.ajax_process_import( data_group, data_preset );
+					self.ajax_process_import( data_group, data_preset );
+				}
 			})
 
 			$('.panel-toggle').on('click', function(){
@@ -159,7 +161,7 @@
 				},
 				success: function(response){
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
-					console.log(response);
+
 					document.location.replace( response.url );
 					//window.location.reload();
 				},

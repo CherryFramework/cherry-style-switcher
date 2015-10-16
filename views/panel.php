@@ -214,6 +214,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 
 				//generate query arg url
 				$query_arg_url = $_SERVER['HTTP_REFERER'];
+
 				$query_arg_url = add_query_arg( array( '_group' => $group, '_preset' => $preset ), $query_arg_url );
 
 				$validate = check_ajax_referer( 'cherry_preset_import', $_wpnonce, false );
@@ -225,14 +226,16 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$file_name = self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] );
 
 					$file_content = self::get_contents( $file_name );
+					$file_content = !is_wp_error( $file_content ) ? $file_content : '';
+
 
 					if( 'string' !== gettype( $file_content ) ){
-						wp_send_json( array( 'type' => 'error' ) );
+						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
 					$import_options = json_decode( $file_content, true );
 
 					if ( ! is_array( $import_options ) || empty( $import_options ) ) {
-						wp_send_json( array( 'type' => 'error' ) );
+						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
 
 					// get current options array
