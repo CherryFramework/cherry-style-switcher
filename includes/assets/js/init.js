@@ -47,7 +47,9 @@
 					$panel.css({'right':0});
 
 					$cover.show();
-					$body.addClass('cover');
+					if( $('.style-switcher-panel')[0] ){
+						$body.addClass('cover');
+					}
 				}else{
 					$panel.removeClass('open');
 					$panel.css({'right': panel_width * -1 });
@@ -163,7 +165,7 @@
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
 
 					document.location.replace( response.url );
-					//window.location.reload();
+					window.location.reload();
 				},
 				dataType: 'json'
 			});

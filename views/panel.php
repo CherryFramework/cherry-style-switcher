@@ -226,13 +226,16 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$file_name = self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] );
 
 					$file_content = self::get_contents( $file_name );
-					$file_content = !is_wp_error( $file_content ) ? $file_content : '';
-
+					$file_content = !is_wp_error( $file_content ) ? $file_content : '{}';
 
 					if( 'string' !== gettype( $file_content ) ){
 						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
+
 					$import_options = json_decode( $file_content, true );
+
+					$import_statics = isset( $import_options['statics'] ) ? $import_options['statics'] : array() ;
+					$import_options = isset( $import_options['options'] ) ? $import_options['options'] : $import_options ;
 
 					if ( ! is_array( $import_options ) || empty( $import_options ) ) {
 						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
@@ -243,7 +246,8 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$current_options = get_option( $settings['id'] );
 
 					if( Cherry_Style_Switcher::is_demo_mode() ){
-						$current_options = $_SESSION['demo_options_storage'];
+						//$current_options = $_SESSION['demo_options_storage'];
+						$current_options = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 					}
 
 					$result = array();
@@ -259,11 +263,18 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					}
 
 					if( Cherry_Style_Switcher::is_demo_mode() ){
-						$_SESSION['demo_options_storage'] = $result;
+						$_SESSION['demo_options_storage']['options'] = $result;
+						if( !empty( $import_statics ) && isset( $import_statics )){
+							$_SESSION['demo_options_storage']['statics'] = $import_statics;
+						}
 						wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 					}
 
 					update_option( $settings['id'], $result );
+
+					if( !empty( $import_statics ) && isset( $import_statics )){
+						update_option( $settings['id'] . '_statics', $import_statics );
+					}
 				}
 
 				wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );

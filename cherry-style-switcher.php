@@ -81,6 +81,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 
 			add_filter('cherry_option_value_source_array', array( $this, 'value_source_array' ) );
+
+			add_filter('cherry_static_current_statics', array( $this, 'current_statics' ) );
 		}
 
 		/**
@@ -158,17 +160,18 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function panel_init() {
-
 			if( self::is_demo_mode() ){
 				$settings = get_option( 'cherry-options' );
 				$current_options = get_option( $settings['id'] );
+				$current_statics = get_option( $settings['id'] . '_statics' );
 
 				if( !session_id() ){
 					session_start();
 				}
-
+				//unset($_SESSION['demo_options_storage']);
 				if ( !isset( $_SESSION['demo_options_storage'] ) ){
-					$_SESSION['demo_options_storage'] = $current_options;
+					$_SESSION['demo_options_storage']['options'] = $current_options;
+					$_SESSION['demo_options_storage']['statics'] = $current_statics;
 				}
 			}
 
@@ -184,9 +187,23 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		function value_source_array( $options_source_array ) {
 			$logged_in = is_user_logged_in();
 			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
-				$options_source_array = $_SESSION['demo_options_storage'];
+				//$options_source_array = $_SESSION['demo_options_storage'];
+				$options_source_array = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 			}
 			return $options_source_array;
+		}
+
+		/**
+		 * Value current statics
+		 *
+		 * @since 1.0.0
+		 */
+		function current_statics( $current_statics ) {
+			$logged_in = is_user_logged_in();
+			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
+				$current_statics = isset( $_SESSION['demo_options_storage']['statics'] ) ? $_SESSION['demo_options_storage']['statics'] : array() ;
+			}
+			return $current_statics;
 		}
 
 		/**
@@ -201,6 +218,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 				if( 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
 					return true;
 				}
+				return false;
 			}
 			return false;
 		}
@@ -218,9 +236,10 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			}
 
 			if ( !is_user_logged_in() ){
-				if( 'true' === self::cherry_swither_get_option('panel-show', 'false') && self::cherry_swither_get_option('demo-mode', 'false') ){
+				if( 'true' === self::cherry_swither_get_option('panel-show', 'false') && 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
 					return true;
 				}
+				return false;
 			}else{
 				$user_info = wp_get_current_user();
 				$access_roles = self::cherry_swither_get_option('access-frontend-panel', false );
