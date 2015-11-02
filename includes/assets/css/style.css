@@ -32,9 +32,6 @@
   font-variant: normal;
   font-weight: 400;
   line-height: 20px;
-  -webkit-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -o-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .admin-bar .style-switcher-panel {
@@ -135,7 +132,9 @@
   color: #4eb7fe;
 }
 .style-switcher-panel.open {
-  right: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .style-switcher-panel.open .panel-toggle {
   color: #4eb7fe;
@@ -178,6 +177,62 @@
   content: ' ';
 }
 
+@media (min-width: 992px) and (max-width: 1200px) {
+  .style-switcher-panel {
+    width: 300px;
+  }
+  .style-switcher-panel .panel-inner .preset-list li {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .style-switcher-panel {
+    width: 200px;
+  }
+  .style-switcher-panel .panel-inner .theme-name {
+    font-size: 18px;
+  }
+  .style-switcher-panel .panel-inner .theme-name span {
+    font-size: 14px;
+  }
+  .style-switcher-panel .panel-inner .preset-list li {
+    width: 50%;
+  }
+  .style-switcher-panel .panel-inner .preset-list li .inner .title {
+    font-size: 12px;
+  }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .style-switcher-panel {
+    width: 150px;
+  }
+  .style-switcher-panel .preset-spinner {
+    padding-top: 30px;
+  }
+  .style-switcher-panel .panel-inner .theme-name {
+    font-size: 18px;
+  }
+  .style-switcher-panel .panel-inner .theme-name span {
+    font-size: 14px;
+  }
+  .style-switcher-panel .panel-inner .preset-list li {
+    width: 100%;
+  }
+}
+@media (min-width: 320px) and (max-width: 479px) {
+  .style-switcher-panel {
+    width: 150px;
+  }
+  .style-switcher-panel .panel-inner .theme-name {
+    font-size: 15px;
+  }
+  .style-switcher-panel .panel-inner .theme-name span {
+    font-size: 12px;
+  }
+  .style-switcher-panel .panel-inner .preset-list li {
+    width: 100%;
+  }
+}
 body.cover {
   overflow: hidden;
 }

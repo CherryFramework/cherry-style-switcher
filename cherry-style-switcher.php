@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Style Switcher
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Cherry Style Switcher plugin for WordPress.
- * Version:     1.0.0
+ * Version:     1.0.3.1
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-style-switcher
@@ -81,6 +81,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			add_filter('cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 
 			add_filter('cherry_option_value_source_array', array( $this, 'value_source_array' ) );
+
+			add_filter('cherry_static_current_statics', array( $this, 'current_statics' ) );
 		}
 
 		/**
@@ -94,7 +96,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			 *
 			 * @since 1.0.0
 			 */
-			define( 'CHERRY_STYLE_SWITCHER_VERSION', '1.0.0' );
+			define( 'CHERRY_STYLE_SWITCHER_VERSION', '1.0.3.1' );
 
 			/**
 			 * Set the slug of the plugin.
@@ -158,17 +160,18 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function panel_init() {
-
 			if( self::is_demo_mode() ){
 				$settings = get_option( 'cherry-options' );
 				$current_options = get_option( $settings['id'] );
+				$current_statics = get_option( $settings['id'] . '_statics' );
 
 				if( !session_id() ){
 					session_start();
 				}
-
+				//unset($_SESSION['demo_options_storage']);
 				if ( !isset( $_SESSION['demo_options_storage'] ) ){
-					$_SESSION['demo_options_storage'] = $current_options;
+					$_SESSION['demo_options_storage']['options'] = $current_options;
+					$_SESSION['demo_options_storage']['statics'] = $current_statics;
 				}
 			}
 
@@ -184,9 +187,23 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		function value_source_array( $options_source_array ) {
 			$logged_in = is_user_logged_in();
 			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
-				$options_source_array = $_SESSION['demo_options_storage'];
+				//$options_source_array = $_SESSION['demo_options_storage'];
+				$options_source_array = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 			}
 			return $options_source_array;
+		}
+
+		/**
+		 * Value current statics
+		 *
+		 * @since 1.0.0
+		 */
+		function current_statics( $current_statics ) {
+			$logged_in = is_user_logged_in();
+			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
+				$current_statics = isset( $_SESSION['demo_options_storage']['statics'] ) ? $_SESSION['demo_options_storage']['statics'] : array() ;
+			}
+			return $current_statics;
 		}
 
 		/**
@@ -198,9 +215,10 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		public static function is_demo_mode() {
 			if ( !is_user_logged_in() ){
-				if( 'true' === cherry_get_option('demo-mode') ){
+				if( 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
 					return true;
 				}
+				return false;
 			}
 			return false;
 		}
@@ -218,16 +236,17 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			}
 
 			if ( !is_user_logged_in() ){
-				if( 'true' === cherry_get_option('panel-show') && 'true' === cherry_get_option('demo-mode') ){
+				if( 'true' === self::cherry_swither_get_option('panel-show', 'false') && 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
 					return true;
 				}
+				return false;
 			}else{
 				$user_info = wp_get_current_user();
-				$access_roles = cherry_get_option( 'access-frontend-panel' );
+				$access_roles = self::cherry_swither_get_option('access-frontend-panel', false );
 				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
 					$role_user = $user_info->roles[0];
 					if ( in_array( $role_user, $access_roles ) ){
-						if ( 'true' === cherry_get_option('panel-show') ){
+						if ( 'true' === self::cherry_swither_get_option('panel-show', 'false') ){
 							return true;
 						}
 					}
@@ -272,7 +291,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( cherry_get_option('panel-show')  === 'true' ){
+			if ( self::cherry_swither_get_option('panel-show', 'false') === 'true' ){
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
@@ -356,6 +375,25 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			);
 
 			return $sections;
+		}
+
+		/**
+		 * Get option by name from theme options
+		 *
+		 * @since  1.0.0
+		 *
+		 * @uses   cherry_get_option  use cherry_get_option from Cherry framework if exist
+		 *
+		 * @param  string  $name    option name to get
+		 * @param  mixed   $default default option value
+		 * @return mixed            option value
+		 */
+		public static function cherry_swither_get_option( $name , $default = false ) {
+			if ( function_exists( 'cherry_get_option' ) ) {
+				$result = cherry_get_option( $name , $default );
+				return $result;
+			}
+			return $default;
 		}
 
 		/**

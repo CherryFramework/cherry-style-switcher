@@ -108,7 +108,8 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 						$html .= '<ul class="preset-list" data-group="' . $group_key . '">';
 							foreach ( $group_setting['presets'] as $preset_key => $preset_setting ) {
 								$tooltip = !empty( $preset_setting['description'] ) ? ' title="' . esc_html( $preset_setting['description'] ) .'"' : '';
-								$html .= '<li data-preset="' . $preset_key . '"' . $tooltip . '>';
+								$item_class = ( isset( $preset_setting['soon'] ) && true == $preset_setting['soon'] ) ? ' class="coming-soon"' : '';
+								$html .= '<li data-preset="' . $preset_key . '"' . $tooltip . '' . $item_class . '>';
 									$thumbnail = self::get_thumbnail( $preset_setting['thumbnail'] );
 									$html .= '<div class="inner">';
 										$html .= '<div class="thumbnail">';
@@ -211,6 +212,11 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 				$group = $_POST['group'];
 				$_wpnonce = $_POST['_wpnonce'];
 
+				//generate query arg url
+				$query_arg_url = $_SERVER['HTTP_REFERER'];
+
+				$query_arg_url = add_query_arg( array( '_group' => $group, '_preset' => $preset ), $query_arg_url );
+
 				$validate = check_ajax_referer( 'cherry_preset_import', $_wpnonce, false );
 				if ( ! $validate ) {
 					wp_die( __( 'Invalid request', 'cherry' ), __( 'Error. Invalid request', 'cherry' ) );
@@ -220,14 +226,19 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$file_name = self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] );
 
 					$file_content = self::get_contents( $file_name );
+					$file_content = !is_wp_error( $file_content ) ? $file_content : '{}';
 
 					if( 'string' !== gettype( $file_content ) ){
-						wp_send_json( array( 'type' => 'error' ) );
+						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
+
 					$import_options = json_decode( $file_content, true );
 
+					$import_statics = isset( $import_options['statics'] ) ? $import_options['statics'] : array() ;
+					$import_options = isset( $import_options['options'] ) ? $import_options['options'] : $import_options ;
+
 					if ( ! is_array( $import_options ) || empty( $import_options ) ) {
-						wp_send_json( array( 'type' => 'error' ) );
+						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
 
 					// get current options array
@@ -235,7 +246,8 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$current_options = get_option( $settings['id'] );
 
 					if( Cherry_Style_Switcher::is_demo_mode() ){
-						$current_options = $_SESSION['demo_options_storage'];
+						//$current_options = $_SESSION['demo_options_storage'];
+						$current_options = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 					}
 
 					$result = array();
@@ -251,14 +263,21 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					}
 
 					if( Cherry_Style_Switcher::is_demo_mode() ){
-						$_SESSION['demo_options_storage'] = $result;
-						wp_send_json( array( 'type' => 'success' ) );
+						$_SESSION['demo_options_storage']['options'] = $result;
+						if( !empty( $import_statics ) && isset( $import_statics )){
+							$_SESSION['demo_options_storage']['statics'] = $import_statics;
+						}
+						wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 					}
 
 					update_option( $settings['id'], $result );
+
+					if( !empty( $import_statics ) && isset( $import_statics )){
+						update_option( $settings['id'] . '_statics', $import_statics );
+					}
 				}
 
-				wp_send_json( array( 'type' => 'success' ) );
+				wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 			}
 		}
 

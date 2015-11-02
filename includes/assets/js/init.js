@@ -30,6 +30,7 @@
 			var
 				self = this
 			,	$panel = $('.style-switcher-panel')
+			,	panel_width = $panel.width()
 			,	$preset_list = $('.preset-list li')
 			,	$panel_toggle = $('.panel-toggle', $panel)
 			,	$cover = $('.site-cover')
@@ -39,13 +40,20 @@
 
 			if ( this.is_local_storage_available ){
 				is_panel_open = localStorage.getItem('is_panel_open');
+				panel_width = $panel.width();
 
 				if( is_panel_open == 'true' ){
 					$panel.addClass('open');
+					$panel.css({'right':0});
+
 					$cover.show();
-					$body.addClass('cover');
+					if( $('.style-switcher-panel')[0] ){
+						$body.addClass('cover');
+					}
 				}else{
 					$panel.removeClass('open');
+					$panel.css({'right': panel_width * -1 });
+
 					$cover.hide();
 				}
 
@@ -62,29 +70,39 @@
 				,	data_preset = $this.data('preset')
 				;
 
-				// update active_presets_object
-				self.active_presets_object[ data_group ] = data_preset;
+				if( !$this.hasClass('coming-soon') ){
+					// update active_presets_object
+					self.active_presets_object[ data_group ] = data_preset;
 
-				// select current item
-				self.select_current_presets( self.active_presets_object );
+					// select current item
+					self.select_current_presets( self.active_presets_object );
 
-				self.ajax_process_import( data_group, data_preset );
+					self.ajax_process_import( data_group, data_preset );
+				}
 			})
 
 			$('.panel-toggle').on('click', function(){
 				$panel.toggleClass('open');
+				panel_width = $panel.width();
 
 				if( $panel.hasClass('open') ){
 					localStorage.setItem('is_panel_open', 'true' );
 					$cover.fadeIn(300);
 					$body.addClass('cover');
+					$panel.css({'right':0});
 				}else{
 					localStorage.setItem('is_panel_open', 'false' );
 					$cover.fadeOut(300);
+					$panel.css({'right': panel_width * -1 });
 					$body.removeClass('cover');
 				}
 			});
-
+			CHERRY_API.variable.$window.on('resize.style_switcher_panel', function(){
+				var panel_width = $panel.width();
+				if( !$panel.hasClass('open') ){
+					$panel.css({'right': panel_width * -1 });
+				}
+			})
 			$panel.tooltip({
 				tooltipClass: "custom-tooltip-styling",
 				track: true,
@@ -145,6 +163,8 @@
 				},
 				success: function(response){
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
+
+					document.location.replace( response.url );
 					window.location.reload();
 				},
 				dataType: 'json'
