@@ -1,0 +1,802 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cherry-style-switcher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-02 16:44+0200\n"
+"PO-Revision-Date: 2015-11-02 16:44+0200\n"
+"Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
+"Language-Team: Cherry Team <support@cherryframework.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__;_n:1,2;_n_noop:1,2;_x:1,2c;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+msgid "Style Switcher"
+msgstr ""
+
+#: cherry-style-switcher.php:301
+msgid "Enable/disable displaying of Style Switcher on site."
+msgstr ""
+
+#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+msgid "Enabled"
+msgstr "Включен"
+
+#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+msgid "Disabled"
+msgstr "Отключен"
+
+#: cherry-style-switcher.php:315
+msgid "Visible To:"
+msgstr ""
+
+#: cherry-style-switcher.php:327
+msgid "Custom style CSS"
+msgstr ""
+
+#: cherry-style-switcher.php:328
+msgid "Define style CSS styling."
+msgstr ""
+
+#: cherry-style-switcher.php:337
+msgid "Demo mode"
+msgstr ""
+
+#: cherry-style-switcher.php:340
+msgid ""
+"Enable/disable demo mode. Demo mode is used for not logged users (guests)"
+msgstr ""
+
+#: views/panel.php:43
+msgid "Layouts"
+msgstr ""
+
+#: views/panel.php:46
+msgid "Wide"
+msgstr ""
+
+#: views/panel.php:47
+msgid "Select layout pattern for website. Wide layout will fit window width."
+msgstr ""
+
+#: views/panel.php:52
+msgid "Boxed"
+msgstr ""
+
+#: views/panel.php:53
+msgid "Select layout pattern for website. Boxed layout will have fixed width."
+msgstr ""
+
+#: views/panel.php:60
+msgid "Sidebars"
+msgstr ""
+
+#: views/panel.php:63
+msgid "Left sidebar"
+msgstr "Левая боковая колонка"
+
+#: views/panel.php:64
+msgid "Page with left sidebar position"
+msgstr ""
+
+#: views/panel.php:69
+msgid "Right sidebar"
+msgstr "Правая боковая колонка"
+
+#: views/panel.php:70
+msgid "Page with right sidebar position"
+msgstr ""
+
+#: views/panel.php:75
+msgid "No sidebar"
+msgstr "Без боковых колонок"
+
+#: views/panel.php:76
+msgid "Page without sidebar"
+msgstr ""
+
+#: views/panel.php:99
+msgid "Applying changes..."
+msgstr ""
+
+#: views/panel.php:104
+msgid "Theme"
+msgstr ""
+
+#: views/panel.php:216
+msgid "Invalid request"
+msgstr ""
+
+#: views/panel.php:216
+msgid "Error. Invalid request"
+msgstr ""
+
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgid "Portfolio category"
+#~ msgstr "Категория портфолио"
+
+#~ msgid "Portfolio tag"
+#~ msgstr "Тег портфолио"
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "Preview"
+#~ msgstr "Предпросмотр"
+
+#~ msgid "Post has no categories"
+#~ msgstr "Запись не принадлежит ни к одной категории"
+
+#~ msgid "Post has no tags"
+#~ msgstr "Запись не содержит тегов"
+
+#~ msgid "Post settings"
+#~ msgstr "Настройки записи"
+
+#~ msgid "External-link:"
+#~ msgstr "Внешняя ссылка:"
+
+#~ msgid "Enter an external link"
+#~ msgstr "Введите внешнюю ссылку"
+
+#~ msgid "Link text:"
+#~ msgstr "Текст ссылки:"
+
+#~ msgid "Enter link text."
+#~ msgstr "Введите текст ссылки"
+
+#~ msgid "Post format options"
+#~ msgstr "Опции формата записи"
+
+#~ msgid "Zoom image"
+#~ msgstr "Zoom"
+
+#~ msgid "Using zooming image"
+#~ msgstr "Использовать функцию увеличения изображения"
+
+#~ msgid "Yes"
+#~ msgstr "Да"
+
+#~ msgid "No"
+#~ msgstr "Нет"
+
+#~ msgid "Crop image"
+#~ msgstr "Обрезать изображение"
+
+#~ msgid "Using cropped image"
+#~ msgstr "Использовать функцию обрезания изображения"
+
+#~ msgid "Cropping image width"
+#~ msgstr "Ширина обрезанного изображения"
+
+#~ msgid "Width value"
+#~ msgstr "Величина ширины"
+
+#~ msgid "Cropping image height"
+#~ msgstr "Высота обрезанного изображения"
+
+#~ msgid "Height value"
+#~ msgstr "Величина ширины"
+
+#~ msgid "Slider images"
+#~ msgstr "Изображения слайдера"
+
+#~ msgid "Select attachments images for slider"
+#~ msgstr "Выберите изображения для слайдера"
+
+#~ msgid "Gallery type"
+#~ msgstr "Тип галереи"
+
+#~ msgid "Select gallery type"
+#~ msgstr "Выберите тип галереи"
+
+#~ msgid "Slider"
+#~ msgstr "Слайдер"
+
+#~ msgid "Masonry"
+#~ msgstr "Каскадная сетка"
+
+#~ msgid "Justified"
+#~ msgstr "По ширине"
+
+#~ msgid "Slider effect Layout"
+#~ msgstr "Разметка эффекта слайдера"
+
+#~ msgid "Could be \"slide\", \"fade\", \"cube\" or \"coverflow\""
+#~ msgstr "Доступны значения \"slide\", \"fade\", \"cube\" или \"coverflow\""
+
+#~ msgid "Slide"
+#~ msgstr "Слайд"
+
+#~ msgid "Cube"
+#~ msgstr "Cube (Куб)"
+
+#~ msgid "Coverflow"
+#~ msgstr "Coverflow (перелистывание)"
+
+#~ msgid "Number of slides per view"
+#~ msgstr "Количество слайдов за один просмотр"
+
+#~ msgid "Space Between Slides"
+#~ msgstr "Отступ между слайдами"
+
+#~ msgid "Width of the space between slides(px)"
+#~ msgstr "Ширина отступа между слайдами (px)"
+
+#~ msgid "Multi Row Slides Layout"
+#~ msgstr "Многоколонная разметка слайдов"
+
+#~ msgid "Number of slides per column"
+#~ msgstr "Количество слайдов в одной колонке"
+
+#~ msgid "Slider pagination"
+#~ msgstr "Пагинация слайдера"
+
+#~ msgid "Displaying slider pagination"
+#~ msgstr "Отображать пагинацию слайдера"
+
+#~ msgid "Slider navigation"
+#~ msgstr "Навигация слайдера"
+
+#~ msgid "Displaying slider navigation"
+#~ msgstr "Отображать навигацию слайдера"
+
+#~ msgid "Slider Infinite Loop"
+#~ msgstr "Бесконечный цикл слайдера"
+
+#~ msgid "Slider Loop Mode"
+#~ msgstr "Режим цикла слайдера"
+
+#~ msgid "Mousewheel Control"
+#~ msgstr "Контроль колесиком мыши"
+
+#~ msgid "Mousewheel Control Mode"
+#~ msgstr "Режим контроля колесиком мыши"
+
+#~ msgid "Duration of transition"
+#~ msgstr "Продолжительность перехода"
+
+#~ msgid "Duration of transition between slides (in ms)"
+#~ msgstr "Время перехода между слайдами (в мс)"
+
+#~ msgid "Free Mode sliding"
+#~ msgstr "Режим свободного пролистывания"
+
+#~ msgid "No fixed positions for slides"
+#~ msgstr "Фиксированные позиции для слайдов не установлена"
+
+#~ msgid "Grab Cursor"
+#~ msgstr "Захват курсором"
+
+#~ msgid "Using Grab Cursor for slider"
+#~ msgstr "Использовать функцию захвата курсором для слайдера"
+
+#~ msgid "Audio source"
+#~ msgstr "Аудио файл"
+
+#~ msgid "Enter audio source( mp3, m4a, ogg, wav, wma )"
+#~ msgstr "Выберите аудио файл (mp3, m4a, ogg, wav, wma)"
+
+#~ msgid "Video type"
+#~ msgstr "Тип видео"
+
+#~ msgid "Choose video type"
+#~ msgstr "Выберите тип видео"
+
+#~ msgid "Embed video type"
+#~ msgstr "Тип встроенного видео"
+
+#~ msgid "HTML5 video type"
+#~ msgstr "HTML5 видео"
+
+#~ msgid "Embed video source"
+#~ msgstr "Ссылка на встроенное видео"
+
+#~ msgid "Enter source for embed video"
+#~ msgstr "Введите ссылку на встроенное видео"
+
+#~ msgid "MP4 video source"
+#~ msgstr "MP4 видео файл"
+
+#~ msgid "Enter source for MP4 video"
+#~ msgstr "Выберите видео файл в формате "
+
+#~ msgid "WEBM video source"
+#~ msgstr "WEBM видео файл"
+
+#~ msgid "Enter source for WEBM video"
+#~ msgstr "Выберите видео файл в формате WEBM"
+
+#~ msgid "OGV video source"
+#~ msgstr "OGV видео файл"
+
+#~ msgid "Enter source for OGV video"
+#~ msgstr "Выберите видео файл в формате OGV"
+
+#~ msgid "Template file (*.tmpl) not found"
+#~ msgstr "Файл шаблона (*.tmpl) не найден"
+
+#~ msgid "Standart post"
+#~ msgstr "Стандартная запись"
+
+#~ msgid "Image post"
+#~ msgstr "Запись-изображение"
+
+#~ msgid "Gallery post"
+#~ msgstr "Запись-галерея"
+
+#~ msgid "Audio post"
+#~ msgstr "Запись-аудио"
+
+#~ msgid "Video post"
+#~ msgstr "Запись-видео"
+
+#~ msgid "%s image"
+#~ msgid_plural "%s images"
+#~ msgstr[0] "%s изображение"
+#~ msgstr[1] "%s изображения"
+#~ msgstr[2] "%s изображений"
+
+#~ msgid "No image"
+#~ msgstr "Нет изображения"
+
+#~ msgid "Posts not found"
+#~ msgstr "Записи не найдены"
+
+#~ msgid "Comment"
+#~ msgid_plural "%s comments"
+#~ msgstr[0] "%s комментарий"
+#~ msgstr[1] "%s комментария"
+#~ msgstr[2] "%s комментариев"
+
+#~ msgid "No comments"
+#~ msgstr "Нет комментариев"
+
+#~ msgid "Category: "
+#~ msgstr "Категория:"
+
+#~ msgid "Tags: "
+#~ msgstr "Теги:"
+
+#~ msgid "Post has no taxonomies"
+#~ msgstr "Запись не содержит классификации"
+
+#~ msgid "Desc"
+#~ msgstr "Убывающий"
+
+#~ msgid "Asc"
+#~ msgstr "Возрастающий"
+
+#~ msgid "Name"
+#~ msgstr "Название"
+
+#~ msgid "Modified"
+#~ msgstr "Отредактированный"
+
+#~ msgid "Comments"
+#~ msgstr "Комментарии"
+
+#~ msgid "Show all"
+#~ msgstr "Отображать все"
+
+#~ msgid "Order"
+#~ msgstr "Порядок"
+
+#~ msgid "Order by"
+#~ msgstr "Упорядочить по"
+
+#~ msgid "Prev page"
+#~ msgstr "Пред. страница"
+
+#~ msgid "Next page"
+#~ msgstr "След. страница"
+
+#~ msgid "Portfolio listing layout"
+#~ msgstr "Разметка списка записей-портфолио"
+
+#~ msgid "Choose portfolio listing view layout."
+#~ msgstr "Выберите формат разметки списка записей-портфолио"
+
+#~ msgid "Grid"
+#~ msgstr "Сетка"
+
+#~ msgid "List"
+#~ msgstr "Список"
+
+#~ msgid "Pagination mode"
+#~ msgstr "Режим пагинации"
+
+#~ msgid "Choose portfolio pagination mode"
+#~ msgstr "Выберите режим пагинации записей-портфолио"
+
+#~ msgid "Ajax pagination"
+#~ msgstr "Ajax пагинация"
+
+#~ msgid "More button"
+#~ msgstr "Кнопка &quot;Читать дальше&quot;"
+
+#~ msgid "Loading animation"
+#~ msgstr "Анимация загрузки"
+
+#~ msgid "Choose posts loading animation"
+#~ msgstr "Выберите тип анимации загрузки записей"
+
+#~ msgid "Fade animation"
+#~ msgstr "Fade (проявление)"
+
+#~ msgid "Scale animation"
+#~ msgstr "Scale (масштабирование)"
+
+#~ msgid "Move Up animation"
+#~ msgstr "Move Up (сдвиг вверх)"
+
+#~ msgid "Flip animation"
+#~ msgstr "Flip (встряхивание)"
+
+#~ msgid "Helix animation"
+#~ msgstr "Helix (по спирали)"
+
+#~ msgid "Fall perspective animation"
+#~ msgstr "Fall perspective (понижение перспективы)"
+
+#~ msgid "Portfolio hover animation"
+#~ msgstr "Анимация портфолио при ховере"
+
+#~ msgid "Choose posts images hover animation"
+#~ msgstr "Выберите тип анимации изображений портфолио при ховере"
+
+#~ msgid "Fade"
+#~ msgstr "Fade (проявление)"
+
+#~ msgid "Scale"
+#~ msgstr "Scale (масштабирование)"
+
+#~ msgid "Custom"
+#~ msgstr "Custom (пользовательская)"
+
+#~ msgid "Select if you want to filter posts by tag or by category."
+#~ msgstr ""
+#~ "Выберите данную опцию, если хотите фильтровать записи по тегам или по "
+#~ "категориям"
+
+#~ msgid "Category"
+#~ msgstr "Категория"
+
+#~ msgid "Tag"
+#~ msgstr "Тег"
+
+#~ msgid "Filters"
+#~ msgstr "Фильтры"
+
+#~ msgid "Enable/disable listing filters"
+#~ msgstr "Включить/Отключить фильтры списков записей."
+
+#~ msgid "Order filters"
+#~ msgstr "Порядковые фильтры"
+
+#~ msgid "Enable/disable order filters"
+#~ msgstr "Включить/Отключить порядковые фильтры"
+
+#~ msgid "Column number"
+#~ msgstr "Количество колонок"
+
+#~ msgid ""
+#~ "Select number of columns for masonry and grid portfolio layouts. (Min 2, "
+#~ "max 20)"
+#~ msgstr ""
+#~ "Установите количество колонок для форматов разметки сетка и каскадная "
+#~ "сетка (мин. 2, макс. 20)"
+
+#~ msgid "Posts per page"
+#~ msgstr "Количество записей на странице"
+
+#~ msgid "Select how many posts per page do you want to display"
+#~ msgstr ""
+#~ "Установите количество записей, которые будут отображаться на одной "
+#~ "странице"
+
+#~ msgid "Item margin"
+#~ msgstr "Границы элементов"
+
+#~ msgid "Select portfolio item margin (outer indent) value."
+#~ msgstr "Установите ширину внешних границ элементов портфолио."
+
+#~ msgid "Justified fixed height"
+#~ msgstr "Фиксированная высота выравнивания"
+
+#~ msgid "Select portfolio item justified height value."
+#~ msgstr "Выберите значение высоты выравнивания записи портфолио."
+
+#~ msgid "Choose if you want to activate images crop."
+#~ msgstr ""
+#~ "Выберите данную опцию, если хотите активировать функцию обрезания "
+#~ "изображений."
+
+#~ msgid "Cropped image width"
+#~ msgstr "Ширина обрезанного изображения"
+
+#~ msgid "Set width of the cropped image."
+#~ msgstr "Установите ширину обрезанного изображения."
+
+#~ msgid "Cropped image height"
+#~ msgstr "Высота обрезанного изображения"
+
+#~ msgid "Set height of the cropped image."
+#~ msgstr "Установите высоту обрезанного изображения."
+
+#~ msgid "More button text"
+#~ msgstr "Текст кнопки &quot;Читать дальше&quot;"
+
+#~ msgid "Set text for portfolio \"read more\" buttons."
+#~ msgstr "Введите текст кнопок &quot;Читать дальше&quot;"
+
+#~ msgid "Read more"
+#~ msgstr "&quot;Читать дальше&quot;"
+
+#~ msgid "Masonry template"
+#~ msgstr "Шаблон каскадной сетки"
+
+#~ msgid "Masonry content template"
+#~ msgstr "Шаблон содержимого в формате каскадной сетки"
+
+#~ msgid "Grid template"
+#~ msgstr "Шаблон сетки"
+
+#~ msgid "Grid content template"
+#~ msgstr "Шаблон содержимого в формате сетки"
+
+#~ msgid "Justified template"
+#~ msgstr "Шаблон формата &quot;по ширине&quot;"
+
+#~ msgid "Justified content template"
+#~ msgstr "Шаблон содержимого формата &quot;по ширине&quot;"
+
+#~ msgid "List template"
+#~ msgstr "Шаблон списка"
+
+#~ msgid "List content template"
+#~ msgstr "Шаблон содержимого списка"
+
+#~ msgid "Image post template"
+#~ msgstr "Шаблон записи-изображения"
+
+#~ msgid "Image post format template content"
+#~ msgstr "Шаблон содержимого записи-изображения"
+
+#~ msgid "Gallery post template"
+#~ msgstr "Шаблон записи-галереи"
+
+#~ msgid "Gallery post format template content"
+#~ msgstr "Шаблон содержимого записи-галереи"
+
+#~ msgid "Audio post template"
+#~ msgstr "Шаблон записи-аудио"
+
+#~ msgid "Audio post format template content"
+#~ msgstr "Шаблон содержимого записи-аудио"
+
+#~ msgid "Video post template"
+#~ msgstr "Шаблон записи-видео"
+
+#~ msgid "Video post format template content"
+#~ msgstr "Шаблон содержимого записи-видео"
+
+#~ msgid "Cherry Portfolio"
+#~ msgstr "Cherry портфолио"
+
+#~ msgid "Portfolio posts"
+#~ msgstr "Записи портфолио"
+
+#~ msgid ""
+#~ "You can choose if you want to display sidebars and how you want to "
+#~ "display them."
+#~ msgstr ""
+#~ "Выберите тип разметки страницы в зависимости от того, хотите ли вы "
+#~ "отображать боковые колонки и в каком виде."
+
+#~ msgid "Left and right sidebar"
+#~ msgstr "Левая и правая боковые колонки"
+
+#~ msgid "Two sidebars on the left"
+#~ msgstr "Две боковые колонки слева"
+
+#~ msgid "Two sidebars on the right"
+#~ msgstr "Две боковые колонки справа"
+
+#~ msgid "Portfolio"
+#~ msgstr "Портфолио"
+
+#~ msgid "Portfolio list"
+#~ msgstr "Список портфолио"
+
+#~ msgid "Add Item"
+#~ msgstr "Добавить запись"
+
+#~ msgid "Add Portfolio Item"
+#~ msgstr "Добавить запись-портфолио"
+
+#~ msgid "Edit Portfolio Item"
+#~ msgstr "Редактировать запись-портфолио"
+
+#~ msgid "New Portfolio Item"
+#~ msgstr "Новая запись-портфолио"
+
+#~ msgid "View Portfolio Item"
+#~ msgstr "Просмотреть запись-портфолио"
+
+#~ msgid "Search Portfolio Items"
+#~ msgstr "Искать записи-портфолио"
+
+#~ msgid "No Portfolio Items found"
+#~ msgstr "Записи-портфолио не найдены"
+
+#~ msgid "No Portfolio Items found in trash"
+#~ msgstr "Записи-портфолио не найдены в корзине"
+
+#~ msgid "Portfolio Categories"
+#~ msgstr "Категории портфолио"
+
+#~ msgid "Categories"
+#~ msgstr "Категории"
+
+#~ msgid "Portfolio Tags"
+#~ msgstr "Теги портфолио"
+
+#~ msgid "Tags"
+#~ msgstr "Теги"
+
+#~ msgid "Portfolio pagination type"
+#~ msgstr "Тип пагинации портфолио"
+
+#~ msgid "Portfolio items animation type"
+#~ msgstr "Тип анимации записей-портфолио"
+
+#~ msgid "All formats"
+#~ msgstr "Все форматы"
+
+#~ msgid "Standard format"
+#~ msgstr "Стандартный"
+
+#~ msgid "Image format"
+#~ msgstr "Изображение"
+
+#~ msgid "Gallery format"
+#~ msgstr "Галерея"
+
+#~ msgid "Audio format"
+#~ msgstr "Аудио"
+
+#~ msgid "Video format"
+#~ msgstr "Видео"
+
+#~ msgid "Post format"
+#~ msgstr "Формат записи"
+
+#~ msgid "Select post format"
+#~ msgstr "Выберите формат записи"
+
+#~ msgid "Filter"
+#~ msgstr "Фильтр"
+
+#~ msgid "Filter visible"
+#~ msgstr "Отображать фильтр"
+
+#~ msgid "Order filter"
+#~ msgstr "Порядковый фильтр"
+
+#~ msgid "Order filter visible"
+#~ msgstr "Отображать порядковый фильтр"
+
+#~ msgid ""
+#~ "Specify number of posts that you want to show. Enter -1 to get all posts"
+#~ msgstr ""
+#~ "Выберите количество записей, которые будут отображаться (Введите значение "
+#~ "-1, чтобы отображать все записи)"
+
+#~ msgid "Set columns number (has effect only for columns layout type)"
+#~ msgstr "Установите количество колонок (применяется только для типа )"
+
+#~ msgid "Gutter width"
+#~ msgstr "Ширина расстояния"
+
+#~ msgid "Set gutter width (in px)"
+#~ msgstr "Установите ширину расстояния (в пикселях)"
+
+#~ msgid "Template"
+#~ msgstr "Шаблон"
+
+#~ msgid "Content template"
+#~ msgstr "Шаблон содержимого"
+
+#~ msgid "Class"
+#~ msgstr "Класс"
+
+#~ msgid "Extra CSS class"
+#~ msgstr "Дополнительный CSS класс"
+
+#~ msgid "Helper information for `Title` macros"
+#~ msgstr "Справка по макросу &quot;Заголовок&quot;"
+
+#~ msgid "Image"
+#~ msgstr "Изображение"
+
+#~ msgid "Helper information for `Image` macros"
+#~ msgstr "Справка по макросу &quot;Изображение&quot;"
+
+#~ msgid "Content"
+#~ msgstr "Содержимое"
+
+#~ msgid "Helper information for `Content` macros"
+#~ msgstr "Справка по макросу &quot;Содержимое&quot;"
+
+#~ msgid "Taxonomy"
+#~ msgstr "Классификация"
+
+#~ msgid "Author"
+#~ msgstr "Автор"
+
+#~ msgid "External link"
+#~ msgstr "Внешняя ссылка"
+
+#~ msgid "Zoom link"
+#~ msgstr "Ссылка Zoom"
+
+#~ msgid "Permalink"
+#~ msgstr "Постоянная ссылка"
+
+#~ msgid "Permalink url"
+#~ msgstr "URL постоянной ссылки"
+
+#~ msgid "Gallery thumbnail"
+#~ msgstr "Миниатюры галереи"
+
+#~ msgid "Thumbnails count"
+#~ msgstr "Количество миниатюр"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
+
+#~ msgid "Limit:"
+#~ msgstr "Ограничение:"
+
+#~ msgid "Image Size (in pixels):"
+#~ msgstr "Размер изображения (в пикселях):"
+
+#~ msgid "Display Author"
+#~ msgstr "Отображать автора"
+
+#~ msgid "Display Avatar"
+#~ msgstr "Отображать аватар"
+
+#~ msgid "Specific ID:"
+#~ msgstr "Уникальный ID:"
+
+#~ msgid "Testimonials Post IDs, separated by commas."
+#~ msgstr "ID записей-отзывов, разделенные запятыми"
+
+#~ msgid "Order By:"
+#~ msgstr "Упорядочить по:"
+
+#~ msgid "Order Direction:"
+#~ msgstr "Направление порядка записей:"
+
+#~ msgid "Custom CSS Class:"
+#~ msgstr "Пользовательский CSS класс"
+
+#~ msgid "Standart post template"
+#~ msgstr "Шаблон стандартной записи"
+
+#~ msgid "Standart post format template content"
+#~ msgstr "Шаблон содержимого стандартной записи"

@@ -1,0 +1,801 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cherry-style-switcher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-02 16:43+0200\n"
+"PO-Revision-Date: 2015-11-02 16:43+0200\n"
+"Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
+"Language-Team: Cherry Team <support@cherryframework.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__;_n:1,2;_n_noop:1,2;_x:1,2c;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+msgid "Style Switcher"
+msgstr ""
+
+#: cherry-style-switcher.php:301
+msgid "Enable/disable displaying of Style Switcher on site."
+msgstr ""
+
+#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+msgid "Enabled"
+msgstr "Activado"
+
+#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: cherry-style-switcher.php:315
+msgid "Visible To:"
+msgstr ""
+
+#: cherry-style-switcher.php:327
+msgid "Custom style CSS"
+msgstr ""
+
+#: cherry-style-switcher.php:328
+msgid "Define style CSS styling."
+msgstr ""
+
+#: cherry-style-switcher.php:337
+msgid "Demo mode"
+msgstr ""
+
+#: cherry-style-switcher.php:340
+msgid ""
+"Enable/disable demo mode. Demo mode is used for not logged users (guests)"
+msgstr ""
+
+#: views/panel.php:43
+msgid "Layouts"
+msgstr ""
+
+#: views/panel.php:46
+msgid "Wide"
+msgstr ""
+
+#: views/panel.php:47
+msgid "Select layout pattern for website. Wide layout will fit window width."
+msgstr ""
+
+#: views/panel.php:52
+msgid "Boxed"
+msgstr ""
+
+#: views/panel.php:53
+msgid "Select layout pattern for website. Boxed layout will have fixed width."
+msgstr ""
+
+#: views/panel.php:60
+msgid "Sidebars"
+msgstr ""
+
+#: views/panel.php:63
+msgid "Left sidebar"
+msgstr "Barra lateral izquierda"
+
+#: views/panel.php:64
+msgid "Page with left sidebar position"
+msgstr ""
+
+#: views/panel.php:69
+msgid "Right sidebar"
+msgstr "Barra lateral derecha "
+
+#: views/panel.php:70
+msgid "Page with right sidebar position"
+msgstr ""
+
+#: views/panel.php:75
+msgid "No sidebar"
+msgstr "Sin barra lateral"
+
+#: views/panel.php:76
+msgid "Page without sidebar"
+msgstr ""
+
+#: views/panel.php:99
+msgid "Applying changes..."
+msgstr ""
+
+#: views/panel.php:104
+msgid "Theme"
+msgstr ""
+
+#: views/panel.php:216
+msgid "Invalid request"
+msgstr ""
+
+#: views/panel.php:216
+msgid "Error. Invalid request"
+msgstr ""
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "Portfolio category"
+#~ msgstr "Categoría portfolio"
+
+#~ msgid "Portfolio tag"
+#~ msgstr "Palabras claves de Portfolio"
+
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "Preview"
+#~ msgstr "Vista previa"
+
+#~ msgid "Post has no categories"
+#~ msgstr "El artículo no tiene categorías"
+
+#~ msgid "Post has no tags"
+#~ msgstr "El artículo no tiene palabras claves"
+
+#~ msgid "Post settings"
+#~ msgstr "Ajustes del artículo"
+
+#~ msgid "External-link:"
+#~ msgstr "Enlace externo:"
+
+#~ msgid "Enter an external link"
+#~ msgstr "Introduzca un enlace externo"
+
+#~ msgid "Link text:"
+#~ msgstr "Texto del enlace:"
+
+#~ msgid "Enter link text."
+#~ msgstr "Introduzca el texto del enlace."
+
+#~ msgid "Post format options"
+#~ msgstr "Opciones del formato de artículo"
+
+#~ msgid "Zoom image"
+#~ msgstr "Zoom de la imagen"
+
+#~ msgid "Using zooming image"
+#~ msgstr "Usar zoom en la imagen"
+
+#~ msgid "Yes"
+#~ msgstr "Si"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "Crop image"
+#~ msgstr "Cortar imagen"
+
+#~ msgid "Using cropped image"
+#~ msgstr "Usar recortador de la imagen"
+
+#~ msgid "Cropping image width"
+#~ msgstr "El ancho de la imagen recortada"
+
+#~ msgid "Width value"
+#~ msgstr "Valor del ancho"
+
+#~ msgid "Cropping image height"
+#~ msgstr "Altura de la imagen recortada"
+
+#~ msgid "Height value"
+#~ msgstr "Valor de la altura"
+
+#~ msgid "Slider images"
+#~ msgstr "Imágenes del slider"
+
+#~ msgid "Select attachments images for slider"
+#~ msgstr "Seleccione archivos adjuntos del slider"
+
+#~ msgid "Gallery type"
+#~ msgstr "Tipo de Galeria"
+
+#~ msgid "Select gallery type"
+#~ msgstr "Seleccione el tipo de galería."
+
+#~ msgid "Slider"
+#~ msgstr "Slider"
+
+#~ msgid "Masonry"
+#~ msgstr "Mampostería"
+
+#~ msgid "Justified"
+#~ msgstr "Ajustado"
+
+#~ msgid "Slider effect Layout"
+#~ msgstr "Efecto de la disposición del Slider "
+
+#~ msgid "Could be \"slide\", \"fade\", \"cube\" or \"coverflow\""
+#~ msgstr ""
+#~ "Podría ser \"diapositiva\", \"fundido\", \"cubo\" o \"llenar y mover\""
+
+#~ msgid "Slide"
+#~ msgstr "Diapositiva"
+
+#~ msgid "Cube"
+#~ msgstr "Cubo"
+
+#~ msgid "Coverflow"
+#~ msgstr "Llenar y mover"
+
+#~ msgid "Number of slides per view"
+#~ msgstr "Número de diapositivas para ver "
+
+#~ msgid "Space Between Slides"
+#~ msgstr "Espacio entre diapositivas"
+
+#~ msgid "Width of the space between slides(px)"
+#~ msgstr "Ancho del espacio entre diapositivas (px)"
+
+#~ msgid "Multi Row Slides Layout"
+#~ msgstr "Disposición de Múltiples Diapositivas de Columnas"
+
+#~ msgid "Number of slides per column"
+#~ msgstr "Número de diapositivas por columna"
+
+#~ msgid "Slider pagination"
+#~ msgstr "Paginación del slider"
+
+#~ msgid "Displaying slider pagination"
+#~ msgstr "Mostrando paginación del slider"
+
+#~ msgid "Slider navigation"
+#~ msgstr "Navigación del slider"
+
+#~ msgid "Displaying slider navigation"
+#~ msgstr "Mostrando navegación del slider"
+
+#~ msgid "Slider Infinite Loop"
+#~ msgstr "La repetición Constante del Slider"
+
+#~ msgid "Slider Loop Mode"
+#~ msgstr "Modo de Repetición del Slider"
+
+#~ msgid "Mousewheel Control"
+#~ msgstr "Control de la Rueda del ratón"
+
+#~ msgid "Mousewheel Control Mode"
+#~ msgstr "Modo del Control de la Rueda del ratón"
+
+#~ msgid "Duration of transition"
+#~ msgstr "Duración de la transición"
+
+#~ msgid "Duration of transition between slides (in ms)"
+#~ msgstr "Duración de la transición entre diapositivas (en ms)"
+
+#~ msgid "Free Mode sliding"
+#~ msgstr "Modo Libre de deslizamiento"
+
+#~ msgid "No fixed positions for slides"
+#~ msgstr "No hay posiciones fijas para diapositivas"
+
+#~ msgid "Grab Cursor"
+#~ msgstr "Agarrar el Cursor"
+
+#~ msgid "Using Grab Cursor for slider"
+#~ msgstr "Usar Agarramiento del Cursor para el sldier"
+
+#~ msgid "Audio source"
+#~ msgstr "Fuente de Audio"
+
+#~ msgid "Enter audio source( mp3, m4a, ogg, wav, wma )"
+#~ msgstr "Introduzca fuente de audio( mp3, m4a, ogg, wav, wma )"
+
+#~ msgid "Video type"
+#~ msgstr "Tipo de Video"
+
+#~ msgid "Choose video type"
+#~ msgstr "Elija tipo de vídeo"
+
+#~ msgid "Embed video type"
+#~ msgstr "Insertar tipo de vídeo"
+
+#~ msgid "HTML5 video type"
+#~ msgstr "Tipo de vídeo HTML5 "
+
+#~ msgid "Embed video source"
+#~ msgstr "Insertar fuente de video"
+
+#~ msgid "Enter source for embed video"
+#~ msgstr "Introduzca fuente del video insertado"
+
+#~ msgid "MP4 video source"
+#~ msgstr "Fuente del video MP4"
+
+#~ msgid "Enter source for MP4 video"
+#~ msgstr "Introduzca fuente de vídeo MP4"
+
+#~ msgid "WEBM video source"
+#~ msgstr "Fuente de vídeo WEBM"
+
+#~ msgid "Enter source for WEBM video"
+#~ msgstr "Introduzca fuente de vídeo WEBM"
+
+#~ msgid "OGV video source"
+#~ msgstr "Fuente de video OGV"
+
+#~ msgid "Enter source for OGV video"
+#~ msgstr "Introduzca fuente de video OGV"
+
+#~ msgid "Template file (*.tmpl) not found"
+#~ msgstr "Archivo de la plantilla (*.tmpl) que no se ha encontrado"
+
+#~ msgid "Standart post"
+#~ msgstr "Artículo estándar"
+
+#~ msgid "Image post"
+#~ msgstr "Artículo tipo imagen"
+
+#~ msgid "Gallery post"
+#~ msgstr "Artículo tipo Galería"
+
+#~ msgid "Audio post"
+#~ msgstr "Artículo tipo Audio"
+
+#~ msgid "Video post"
+#~ msgstr "Artículo tipo Video"
+
+#~ msgid "%s image"
+#~ msgid_plural "%s images"
+#~ msgstr[0] "%s imagen"
+#~ msgstr[1] "%s imagenes"
+
+#~ msgid "No image"
+#~ msgstr "Sin imágen"
+
+#~ msgid "Posts not found"
+#~ msgstr "Artículo no se ha podido encontrar"
+
+#~ msgid "Comment"
+#~ msgid_plural "%s comments"
+#~ msgstr[0] "Comentario"
+#~ msgstr[1] "%s comentarios"
+
+#~ msgid "No comments"
+#~ msgstr "No hay comentarios"
+
+#~ msgid "Category: "
+#~ msgstr "Categoría:"
+
+#~ msgid "Tags: "
+#~ msgstr "Palabras claves:"
+
+#~ msgid "Post has no taxonomies"
+#~ msgstr "El artículo no tiene taxonomías"
+
+#~ msgid "Desc"
+#~ msgstr "Descendente"
+
+#~ msgid "Asc"
+#~ msgstr "Ascendente"
+
+#~ msgid "Name"
+#~ msgstr "Nombre"
+
+#~ msgid "Modified"
+#~ msgstr "Modificado"
+
+#~ msgid "Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "Show all"
+#~ msgstr "Mostrar todo"
+
+#~ msgid "Order"
+#~ msgstr "Ordenar"
+
+#~ msgid "Order by"
+#~ msgstr "Ordenar por"
+
+#~ msgid "Prev page"
+#~ msgstr "Página anterior"
+
+#~ msgid "Next page"
+#~ msgstr "Página siguiente"
+
+#~ msgid "Portfolio listing layout"
+#~ msgstr "Disposición del listado Portfolio"
+
+#~ msgid "Choose portfolio listing view layout."
+#~ msgstr "Elija la disposición del listado Portfolio"
+
+#~ msgid "Grid"
+#~ msgstr "Rejilla"
+
+#~ msgid "List"
+#~ msgstr "Lista"
+
+#~ msgid "Pagination mode"
+#~ msgstr "Modo de paginación"
+
+#~ msgid "Choose portfolio pagination mode"
+#~ msgstr "Elija la disposición del listado Portfolio"
+
+#~ msgid "Ajax pagination"
+#~ msgstr "Paginación de Ajax"
+
+#~ msgid "More button"
+#~ msgstr "Botón Leer Más"
+
+#~ msgid "Loading animation"
+#~ msgstr "Animación al cargar artículos"
+
+#~ msgid "Choose posts loading animation"
+#~ msgstr "Elija la animación al cargar artículos"
+
+#~ msgid "Fade animation"
+#~ msgstr "Efecto del animación cuando se profundiza"
+
+#~ msgid "Scale animation"
+#~ msgstr "Efecto de escala"
+
+#~ msgid "Move Up animation"
+#~ msgstr "Efecto ascendente"
+
+#~ msgid "Flip animation"
+#~ msgstr "Efecto de giro"
+
+#~ msgid "Helix animation"
+#~ msgstr "Efecto Hélice"
+
+#~ msgid "Fall perspective animation"
+#~ msgstr "Animación de descenso de perspectiva"
+
+#~ msgid "Portfolio hover animation"
+#~ msgstr "Animación al pasar el ratón"
+
+#~ msgid "Choose posts images hover animation"
+#~ msgstr ""
+#~ "Seleccione efectos de animación a las imágenes cuando se pasa el ratón"
+
+#~ msgid "Fade"
+#~ msgstr "Descolorarse"
+
+#~ msgid "Scale"
+#~ msgstr "Escala"
+
+#~ msgid "Custom"
+#~ msgstr "Personalizado"
+
+#~ msgid "Select if you want to filter posts by tag or by category."
+#~ msgstr ""
+#~ "Seleccione si desea filtrar los mensajes por palabras calientes o por "
+#~ "categoría."
+
+#~ msgid "Category"
+#~ msgstr "Categoría"
+
+#~ msgid "Tag"
+#~ msgstr "Palabras claves"
+
+#~ msgid "Filters"
+#~ msgstr "Filtros"
+
+#~ msgid "Enable/disable listing filters"
+#~ msgstr "Activar/desactivar la lista de filtros"
+
+#~ msgid "Order filters"
+#~ msgstr "Filtros de orden"
+
+#~ msgid "Enable/disable order filters"
+#~ msgstr "Activar/desactivar los filtros de orden"
+
+#~ msgid "Column number"
+#~ msgstr "Número de columna"
+
+#~ msgid ""
+#~ "Select number of columns for masonry and grid portfolio layouts. (Min 2, "
+#~ "max 20)"
+#~ msgstr ""
+#~ "Seleccione el número de columnas de mampostería y disposición de la "
+#~ "rejilla portfolio. (Min 2, max 20)"
+
+#~ msgid "Posts per page"
+#~ msgstr "Artículos por página"
+
+#~ msgid "Select how many posts per page do you want to display"
+#~ msgstr "Seleccione la cantidad de mensajes por página los que desea mostrar"
+
+#~ msgid "Item margin"
+#~ msgstr "Margen del artículo"
+
+#~ msgid "Select portfolio item margin (outer indent) value."
+#~ msgstr ""
+#~ "Seleccione margen del valor del artículo portfolio (guión exterior)."
+
+#~ msgid "Justified fixed height"
+#~ msgstr "Altura fija del Justified"
+
+#~ msgid "Select portfolio item justified height value."
+#~ msgstr "Seleccione la altura del artículo justificado tipo portfolio"
+
+#~ msgid "Choose if you want to activate images crop."
+#~ msgstr "Elija si desea activar las imágenes recortadas."
+
+#~ msgid "Cropped image width"
+#~ msgstr "Ancho de la imagen recortada"
+
+#~ msgid "Set width of the cropped image."
+#~ msgstr "Ajuste el ancho de la imagen recortada."
+
+#~ msgid "Cropped image height"
+#~ msgstr "Altura de la imagen recortada"
+
+#~ msgid "Set height of the cropped image."
+#~ msgstr "Ajuste la altura de la imagen recortada."
+
+#~ msgid "More button text"
+#~ msgstr "Texto del botón Leer más"
+
+#~ msgid "Set text for portfolio \"read more\" buttons."
+#~ msgstr "Establezca el texto del botón \"leer más\"."
+
+#~ msgid "Read more"
+#~ msgstr "Leer Más"
+
+#~ msgid "Masonry template"
+#~ msgstr "Mampostería de la plantilla"
+
+#~ msgid "Masonry content template"
+#~ msgstr "La plantilla del contenido de mampostería"
+
+#~ msgid "Grid template"
+#~ msgstr "Plantilla rejilla"
+
+#~ msgid "Grid content template"
+#~ msgstr "Contenido de la plantilla rejilla"
+
+#~ msgid "Justified template"
+#~ msgstr "Plantilla \"Justified\""
+
+#~ msgid "Justified content template"
+#~ msgstr "Contenido de la plantilla \"Justified\""
+
+#~ msgid "List template"
+#~ msgstr "Plantilla List"
+
+#~ msgid "List content template"
+#~ msgstr "Contenido de la plantilla List"
+
+#~ msgid "Image post template"
+#~ msgstr "Artículo de Imagen de la plantilla"
+
+#~ msgid "Image post format template content"
+#~ msgstr "Artículo tipo imagen del contenido de la plantilla"
+
+#~ msgid "Gallery post template"
+#~ msgstr "Artículo tipo Galería"
+
+#~ msgid "Gallery post format template content"
+#~ msgstr "Artículo tipo Galería del contenido de la plantilla"
+
+#~ msgid "Audio post template"
+#~ msgstr "Artículo tipo Audio"
+
+#~ msgid "Audio post format template content"
+#~ msgstr "Artículo tipo Audio del contenido de la plantilla"
+
+#~ msgid "Video post template"
+#~ msgstr "Artículo tipo Video "
+
+#~ msgid "Video post format template content"
+#~ msgstr "Artículo tipo Video del contenido de la plantilla"
+
+#~ msgid "Cherry Portfolio"
+#~ msgstr "Cherry Portfolio"
+
+#~ msgid "Portfolio posts"
+#~ msgstr "Artículos tipo Portfolio"
+
+#~ msgid ""
+#~ "You can choose if you want to display sidebars and how you want to "
+#~ "display them."
+#~ msgstr ""
+#~ "Usted puede elegir si desea mostrar las barras laterales y la forma en "
+#~ "que desea mostrarlos."
+
+#~ msgid "Left and right sidebar"
+#~ msgstr "Barra lateral izquierda y derecha"
+
+#~ msgid "Two sidebars on the left"
+#~ msgstr "Dos barras laterales a la izquierda"
+
+#~ msgid "Two sidebars on the right"
+#~ msgstr "Dos barras laterales  a la derecha"
+
+#~ msgid "Portfolio"
+#~ msgstr "Portfolio"
+
+#~ msgid "Portfolio list"
+#~ msgstr "Lista de Portfolio"
+
+#~ msgid "Add Item"
+#~ msgstr "Añadir artículo "
+
+#~ msgid "Add Portfolio Item"
+#~ msgstr "Añadir el artíсulo tipo Portfolio"
+
+#~ msgid "Edit Portfolio Item"
+#~ msgstr "Editar artículo tipo Portfolio"
+
+#~ msgid "New Portfolio Item"
+#~ msgstr "Nuevo artículo tipo Portfolio"
+
+#~ msgid "View Portfolio Item"
+#~ msgstr "Mostrar artículo tipo Portfolio"
+
+#~ msgid "Search Portfolio Items"
+#~ msgstr "Buscar artículos tipo Portfolio"
+
+#~ msgid "No Portfolio Items found"
+#~ msgstr "No hay artículos tipo Portfolio"
+
+#~ msgid "No Portfolio Items found in trash"
+#~ msgstr "No hay artículos tipo Portfolio que estén en la papelera"
+
+#~ msgid "Portfolio Categories"
+#~ msgstr "Categorías Portfolio"
+
+#~ msgid "Categories"
+#~ msgstr "Categorías"
+
+#~ msgid "Portfolio Tags"
+#~ msgstr "Palabras claves del Portfolio"
+
+#~ msgid "Tags"
+#~ msgstr "Palabras claves"
+
+#~ msgid "Portfolio pagination type"
+#~ msgstr "Tipo de paginación de Portfolio"
+
+#~ msgid "Portfolio items animation type"
+#~ msgstr "Tipo de animación del artículo Portfolio"
+
+#~ msgid "All formats"
+#~ msgstr "Todos los formatos"
+
+#~ msgid "Standard format"
+#~ msgstr "Formato estándar"
+
+#~ msgid "Image format"
+#~ msgstr "Formato de imagen"
+
+#~ msgid "Gallery format"
+#~ msgstr "Formato Galería"
+
+#~ msgid "Audio format"
+#~ msgstr "Formato Audio"
+
+#~ msgid "Video format"
+#~ msgstr "Formato Video"
+
+#~ msgid "Post format"
+#~ msgstr "Formato del artículo"
+
+#~ msgid "Select post format"
+#~ msgstr "Seleccione el formato del artículo"
+
+#~ msgid "Filter"
+#~ msgstr "Filtro"
+
+#~ msgid "Filter visible"
+#~ msgstr "Filtro visible"
+
+#~ msgid "Order filter"
+#~ msgstr "Filtro del orden"
+
+#~ msgid "Order filter visible"
+#~ msgstr "Filtro del orden visible"
+
+#~ msgid ""
+#~ "Specify number of posts that you want to show. Enter -1 to get all posts"
+#~ msgstr ""
+#~ "Introduzca el número de artículos que desea mostrar. Introduzca -1 para "
+#~ "obtener todos los mensajes"
+
+#~ msgid "Set columns number (has effect only for columns layout type)"
+#~ msgstr ""
+#~ "Seleccione el número de columnas (tiene efecto sólo para los tipos de "
+#~ "presentación de columnas)"
+
+#~ msgid "Gutter width"
+#~ msgstr "La anchura del espacio entre columnas"
+
+#~ msgid "Set gutter width (in px)"
+#~ msgstr "Establezca la anchura del espacio entre columnas (en px)"
+
+#~ msgid "Template"
+#~ msgstr "Plantilla"
+
+#~ msgid "Content template"
+#~ msgstr "Contenido de la plantilla"
+
+#~ msgid "Class"
+#~ msgstr "Clase"
+
+#~ msgid "Extra CSS class"
+#~ msgstr "Extra clase CSS "
+
+#~ msgid "Helper information for `Title` macros"
+#~ msgstr "Información acompañante del marcos del \"Título\""
+
+#~ msgid "Image"
+#~ msgstr "Imagen"
+
+#~ msgid "Helper information for `Image` macros"
+#~ msgstr "Información acompañante del marcos de la \"Imagen\""
+
+#~ msgid "Content"
+#~ msgstr "Contenido"
+
+#~ msgid "Helper information for `Content` macros"
+#~ msgstr "Información acompañante del marcos del \"Contenido\""
+
+#~ msgid "Taxonomy"
+#~ msgstr "Taxonomía"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgid "External link"
+#~ msgstr "Enlace externo"
+
+#~ msgid "Zoom link"
+#~ msgstr "Enlace zoom"
+
+#~ msgid "Permalink"
+#~ msgstr "Permalink"
+
+#~ msgid "Permalink url"
+#~ msgstr "Permalink url"
+
+#~ msgid "Gallery thumbnail"
+#~ msgstr "Galería de miniaturas"
+
+#~ msgid "Thumbnails count"
+#~ msgstr "Contador de miniaturas"
+
+#~ msgid "Title:"
+#~ msgstr "Título:"
+
+#~ msgid "Limit:"
+#~ msgstr "Límite:"
+
+#~ msgid "Image Size (in pixels):"
+#~ msgstr "Tamaño de la imagen (en píxeles):"
+
+#~ msgid "Display Author"
+#~ msgstr "Mostrar al Autor"
+
+#~ msgid "Display Avatar"
+#~ msgstr "Mostrar Avatar"
+
+#~ msgid "Specific ID:"
+#~ msgstr "Específica ID:"
+
+#~ msgid "Testimonials Post IDs, separated by commas."
+#~ msgstr "IDs del Artículo Testimonios, separado por comas."
+
+#~ msgid "Order By:"
+#~ msgstr "Ordenar Por:"
+
+#~ msgid "Order Direction:"
+#~ msgstr "Dirección del orden:"
+
+#~ msgid "Custom CSS Class:"
+#~ msgstr "Clase CSS personalizada"
+
+#~ msgid "Standart post template"
+#~ msgstr "Artículo Estándar de la plantilla"
+
+#~ msgid "Standart post format template content"
+#~ msgstr "Artículo tipo estándart del contenido de la plantilla"
