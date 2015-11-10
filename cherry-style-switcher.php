@@ -10,14 +10,20 @@
  * License:     GPL-3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path: /languages
+ *
+ * @package  Cherry Style Switcher
+ * @category Core
+ * @author   Cherry Team
+ * @license  GPL-2.0+
  */
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
+
 // If class 'Cherry_Style_Switcher' not exists.
-if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
+if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 
 	/**
 	 * Sets up and initializes Preset Switcher plugin.
@@ -35,15 +41,12 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		private static $instance = null;
 
 		/**
-		 * @var bool
+		 * Panel show status
+		 *
+		 * @since 1.0.0
+		 * @var   bool
 		 */
 		public $isShow = true;
-
-
-		/**
-		 * @var object
-		 */
-		public $switcher_panel;
 
 		/**
 		 * Sets up needed actions/filters for the plugin to initialize.
@@ -92,6 +95,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function constants() {
+
 			/**
 			 * Set the version number of the plugin.
 			 *
@@ -141,14 +145,16 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function includes() {
+
 			if ( is_admin() ) {
+
 				require_once( CHERRY_STYLE_SWITCHER_DIR . 'admin/includes/class-cherry-update/class-cherry-plugin-update.php' );
 
 				$Cherry_Plugin_Update = new Cherry_Plugin_Update();
 				$Cherry_Plugin_Update -> init( array(
 						'version'			=> CHERRY_STYLE_SWITCHER_VERSION,
 						'slug'				=> CHERRY_STYLE_SWITCHER_SLUG,
-						'repository_name'	=> CHERRY_STYLE_SWITCHER_SLUG
+						'repository_name'	=> CHERRY_STYLE_SWITCHER_SLUG,
 				));
 			}
 
@@ -161,16 +167,18 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		function panel_init() {
-			if( self::is_demo_mode() ){
+
+			if( self::is_demo_mode() ) {
+
 				$settings = get_option( 'cherry-options' );
 				$current_options = get_option( $settings['id'] );
 				$current_statics = get_option( $settings['id'] . '_statics' );
 
-				if( !session_id() ){
+				if( ! session_id() ) {
 					session_start();
 				}
-				//unset($_SESSION['demo_options_storage']);
-				if ( !isset( $_SESSION['demo_options_storage'] ) ){
+
+				if ( ! isset( $_SESSION['demo_options_storage'] ) ) {
 					$_SESSION['demo_options_storage']['options'] = $current_options;
 					$_SESSION['demo_options_storage']['statics'] = $current_statics;
 				}
@@ -187,8 +195,8 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		function value_source_array( $options_source_array ) {
 			$logged_in = is_user_logged_in();
-			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
-				//$options_source_array = $_SESSION['demo_options_storage'];
+
+			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ) {
 				$options_source_array = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 			}
 			return $options_source_array;
@@ -197,56 +205,69 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		/**
 		 * Value current statics
 		 *
+		 * @return array current settings
 		 * @since 1.0.0
 		 */
 		function current_statics( $current_statics ) {
 			$logged_in = is_user_logged_in();
-			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ){
+
+			if ( isset( $_SESSION['demo_options_storage'] ) && !$logged_in ) {
 				$current_statics = isset( $_SESSION['demo_options_storage']['statics'] ) ? $_SESSION['demo_options_storage']['statics'] : array() ;
 			}
+
 			return $current_statics;
 		}
 
 		/**
 		 * Is demo state enabled
 		 *
-		 * @return boolean demo state
-		 *
 		 * @since 1.0.0
+		 *
+		 * @return boolean demo state
 		 */
 		public static function is_demo_mode() {
-			if ( !is_user_logged_in() ){
-				if( 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
+
+			if ( !is_user_logged_in() ) {
+
+				if( 'true' === self::cherry_swither_get_option('demo-mode', 'false') ) {
 					return true;
 				}
+
 				return false;
 			}
+
 			return false;
 		}
 
 		/**
 		 * Is panel enabled
 		 *
-		 * @return boolean show panel
-		 *
 		 * @since 1.0.0
+		 *
+		 * @return boolean show panel
 		 */
 		public static function is_panel_show() {
-			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table'){
+
+			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table') {
 				return false;
 			}
 
-			if ( !is_user_logged_in() ){
-				if( 'true' === self::cherry_swither_get_option('panel-show', 'false') && 'true' === self::cherry_swither_get_option('demo-mode', 'false') ){
+			if ( ! is_user_logged_in() ) {
+
+				if( 'true' === self::cherry_swither_get_option('panel-show', 'false') && 'true' === self::cherry_swither_get_option('demo-mode', 'false') ) {
 					return true;
 				}
+
 				return false;
-			}else{
+			} else {
 				$user_info = wp_get_current_user();
 				$access_roles = self::cherry_swither_get_option('access-frontend-panel', false );
-				if ( isset( $user_info->roles ) && !empty( $user_info->roles ) && is_array( $access_roles ) && !empty( $access_roles ) ){
+
+				if ( isset( $user_info->roles ) && ! empty( $user_info->roles ) && is_array( $access_roles ) && ! empty( $access_roles ) ) {
 					$role_user = $user_info->roles[0];
-					if ( in_array( $role_user, $access_roles ) ){
+
+					if ( in_array( $role_user, $access_roles ) ) {
+
 						if ( 'true' === self::cherry_swither_get_option('panel-show', 'false') ){
 							return true;
 						}
@@ -292,7 +313,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( self::cherry_swither_get_option('panel-show', 'false') === 'true' ){
+			if ( self::cherry_swither_get_option('panel-show', 'false') === 'true' ) {
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
 				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true);
@@ -310,7 +331,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 *
 		 * @param array $sections
 		 */
-		public function add_cherry_options( $sections ){
+		public function add_cherry_options( $sections ) {
 			$style_switcher_options = array();
 
 			$style_switcher_options['panel-show'] = array(
@@ -326,7 +347,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 					'true_toggle'	=> __( 'Enabled', 'cherry' ),
 					'false_toggle'	=> __( 'Disabled', 'cherry' ),
 					'true_slave'	=> 'style-switcher-true-slave',
-					'false_slave'	=> 'style-switcher-false-slave'
+					'false_slave'	=> 'style-switcher-false-slave',
 				),
 			);
 
@@ -385,11 +406,12 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 *
 		 * @uses   cherry_get_option  use cherry_get_option from Cherry framework if exist
 		 *
-		 * @param  string  $name    option name to get
-		 * @param  mixed   $default default option value
+		 * @param  string  $name    option name to get.
+		 * @param  mixed   $default default option value.
 		 * @return mixed            option value
 		 */
 		public static function cherry_swither_get_option( $name , $default = false ) {
+
 			if ( function_exists( 'cherry_get_option' ) ) {
 				$result = cherry_get_option( $name , $default );
 				return $result;
@@ -407,16 +429,18 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 			global $wp_roles;
 			$all_roles = $wp_roles->roles;
 
-			if (isset($all_roles) && !empty($all_roles))
-			{
-				foreach ($all_roles as $role => $value)
-				{
+			if ( isset( $all_roles ) && ! empty( $all_roles ) ) {
+
+				foreach ( $all_roles as $role => $value ) {
 					$roles[$role] = $value['name'];
 				}
+
 			}
 
 			return $roles;
+
 		}
+
 		/**
 		 * On plugin activation.
 		 *
@@ -440,8 +464,9 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
-			if ( null == self::$instance )
+			if ( null == self::$instance ) {
 				self::$instance = new self;
+			}
 
 			return self::$instance;
 		}
@@ -454,9 +479,11 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @return html string
 		 */
 		public function display_panel() {
-			if( self::is_panel_show() ){
+
+			if( self::is_panel_show() ) {
 				$this->switcher_panel->panel_render();
 			}
+
 		}
 	}
 

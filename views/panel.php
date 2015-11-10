@@ -90,7 +90,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		 * @return string
 		 */
 		public function panel_render(){
-			$demo_mode_class = Cherry_Style_Switcher::is_demo_mode() ? ' demo-mode-class' : '' ;
+			$demo_mode_class = Cherry_Style_Switcher::is_demo_mode() ? ' demo-mode-class' : '';
 
 			$html = '';
 			$html .= '<div class="style-switcher-panel' . $demo_mode_class . '">';
@@ -102,12 +102,14 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 				$html .= '<div class="panel-inner">';
 				$html .= apply_filters( 'cherry_style_panel_before', '' );
 				$html .= '<h3 class="theme-name"><span>' . __('Theme', 'cherry-style-switcher') . '</span>' . wp_get_theme() . '</h3>';
+
 					foreach ( $this->default_settings as $group_key => $group_setting ) {
 						$html .= '<div class="group-wrap">';
 						$html .= '<h5 class="group-name"><span>' . $group_setting['group_name'] . '</span></h5>';
 						$html .= '<ul class="preset-list" data-group="' . $group_key . '">';
+
 							foreach ( $group_setting['presets'] as $preset_key => $preset_setting ) {
-								$tooltip = !empty( $preset_setting['description'] ) ? ' title="' . esc_html( $preset_setting['description'] ) .'"' : '';
+								$tooltip = ! empty( $preset_setting['description'] ) ? ' title="' . esc_html( $preset_setting['description'] ) .'"' : '';
 								$item_class = ( isset( $preset_setting['soon'] ) && true == $preset_setting['soon'] ) ? ' class="coming-soon"' : '';
 								$html .= '<li data-preset="' . $preset_key . '"' . $tooltip . '' . $item_class . '>';
 									$thumbnail = self::get_thumbnail( $preset_setting['thumbnail'] );
@@ -119,6 +121,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 									$html .= '</div>';
 								$html .= '</li>';
 							}
+
 						$html .= '</ul>';
 						$html .= '<div class="clear"></div>';
 						$html .= '</div>';
@@ -161,11 +164,11 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 			$plugin_preset_dir = CHERRY_STYLE_SWITCHER_DIR . 'default_presets/thumbnails/';
 			$plugin_preset_uri = CHERRY_STYLE_SWITCHER_URI . 'default_presets/thumbnails/';
 
-			if( file_exists( $child_preset_dir . $thumbnail ) && !empty( $thumbnail ) ){
+			if( file_exists( $child_preset_dir . $thumbnail ) && ! empty( $thumbnail ) ) {
 				return $child_preset_uri . $thumbnail;
 			}
 
-			if( file_exists( $plugin_preset_dir . $thumbnail ) && !empty( $thumbnail ) ){
+			if( file_exists( $plugin_preset_dir . $thumbnail ) && ! empty( $thumbnail ) ) {
 				return $plugin_preset_uri . $thumbnail;
 			}else{
 				return $plugin_preset_uri . 'inherit.svg';
@@ -189,11 +192,11 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 			$plugin_preset_dir = CHERRY_STYLE_SWITCHER_DIR . 'default_presets/presets/';
 			$plugin_preset_uri = CHERRY_STYLE_SWITCHER_URI . 'default_presets/presets/';
 
-			if( file_exists( $child_preset_dir . $json ) && !empty( $json ) ){
+			if( file_exists( $child_preset_dir . $json ) && !empty( $json ) ) {
 				return $child_preset_dir . $json;
 			}
 
-			if( file_exists( $plugin_preset_dir . $json ) && !empty( $json ) ){
+			if( file_exists( $plugin_preset_dir . $json ) && !empty( $json ) ) {
 				return $plugin_preset_dir . $json;
 			}else{
 				return $plugin_preset_dir . 'inherit.json';
@@ -207,7 +210,8 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		 * @since 4.0.0
 		 */
 		function preset_import() {
-			if ( !empty($_POST) && array_key_exists('preset', $_POST) && array_key_exists('group', $_POST) && array_key_exists( '_wpnonce', $_POST ) ) {
+
+			if ( ! empty($_POST) && array_key_exists('preset', $_POST) && array_key_exists('group', $_POST) && array_key_exists( '_wpnonce', $_POST ) ) {
 				$preset = $_POST['preset'];
 				$group = $_POST['group'];
 				$_wpnonce = $_POST['_wpnonce'];
@@ -222,13 +226,13 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					wp_die( __( 'Invalid request', 'cherry' ), __( 'Error. Invalid request', 'cherry' ) );
 				}
 
-				if( false !== self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] ) ){
+				if( false !== self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] ) ) {
 					$file_name = self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] );
 
 					$file_content = self::get_contents( $file_name );
 					$file_content = !is_wp_error( $file_content ) ? $file_content : '{}';
 
-					if( 'string' !== gettype( $file_content ) ){
+					if( 'string' !== gettype( $file_content ) ) {
 						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );
 					}
 
@@ -245,7 +249,7 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$settings        = get_option( 'cherry-options' );
 					$current_options = get_option( $settings['id'] );
 
-					if( Cherry_Style_Switcher::is_demo_mode() ){
+					if( Cherry_Style_Switcher::is_demo_mode() ) {
 						//$current_options = $_SESSION['demo_options_storage'];
 						$current_options = isset( $_SESSION['demo_options_storage']['options'] ) ? $_SESSION['demo_options_storage']['options'] : $_SESSION['demo_options_storage'] ;
 					}
@@ -254,25 +258,29 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 
 					foreach ( $current_options as $section => $data ) {
 						foreach ( $data['options-list'] as $opt => $val ) {
-								if( isset( $import_options[$opt] ) ){
-									$result[$section]['options-list'][$opt] = $import_options[$opt];
-								}else{
-									$result[$section]['options-list'][$opt] = $current_options[$section]['options-list'][$opt];
-								}
+
+							if( isset( $import_options[$opt] ) ) {
+								$result[$section]['options-list'][$opt] = $import_options[$opt];
+							}else{
+								$result[$section]['options-list'][$opt] = $current_options[$section]['options-list'][$opt];
+							}
+
 						}
 					}
 
-					if( Cherry_Style_Switcher::is_demo_mode() ){
+					if( Cherry_Style_Switcher::is_demo_mode() ) {
 						$_SESSION['demo_options_storage']['options'] = $result;
-						if( !empty( $import_statics ) && isset( $import_statics )){
+
+						if( ! empty( $import_statics ) && isset( $import_statics ) ) {
 							$_SESSION['demo_options_storage']['statics'] = $import_statics;
 						}
+
 						wp_send_json( array( 'type' => 'success', 'url' => $query_arg_url ) );
 					}
 
 					update_option( $settings['id'], $result );
 
-					if( !empty( $import_statics ) && isset( $import_statics )){
+					if( ! empty( $import_statics ) && isset( $import_statics ) ) {
 						update_option( $settings['id'] . '_statics', $import_statics );
 					}
 				}
@@ -289,21 +297,22 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		 */
 		public static function get_contents( $file ) {
 
-			if ( !function_exists( 'WP_Filesystem' ) ) {
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
 				include_once( ABSPATH . '/wp-admin/includes/file.php' );
 			}
 
 			WP_Filesystem();
 			global $wp_filesystem;
 
-			if ( !$wp_filesystem->exists( $file ) ) { // Check for existence.
+			// Check for existence
+			if ( ! $wp_filesystem->exists( $file ) ) {
 				return false;
 			}
 
 			// Read the file.
 			$content = $wp_filesystem->get_contents( $file );
 
-			if ( !$content ) {
+			if ( ! $content ) {
 				return new WP_Error( 'reading_error', 'Error when reading file' ); // Return error object.
 			}
 
@@ -319,14 +328,13 @@ if ( !class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
-			if ( null == self::$instance )
+			if ( null == self::$instance ) {
 				self::$instance = new self;
+			}
 
 			return self::$instance;
 		}
 	}
-
-	//Cherry_Preset_Switcher_Panel::get_instance();
 }
 
 ?>
