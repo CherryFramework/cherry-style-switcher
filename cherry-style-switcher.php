@@ -39,6 +39,7 @@ if ( !class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		public $isShow = true;
 
+
 		/**
 		 * @var object
 		 */
