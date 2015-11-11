@@ -30,8 +30,20 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		 */
 		private static $instance = null;
 
+		/**
+		 * Default settings.
+		 *
+		 * @since 1.0.0
+		 * @var   array
+		 */
 		public $default_settings = null;
 
+		/**
+		 * Preset settings.
+		 *
+		 * @since 1.0.0
+		 * @var   array
+		 */
 		public static $preset_settings = null;
 
 		/**
@@ -69,7 +81,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 						'group_name'	=> __( 'Sidebars', 'cherry-style-switcher' ),
 						'presets'		=> array(
 							'left_sidebar' => array(
-								'label'			=> __('Left sidebar', 'cherry-style-switcher'),
+								'label'			=> __( 'Left sidebar', 'cherry-style-switcher' ),
 								'description'	=> __( 'Page with left sidebar position', 'cherry-style-switcher' ),
 								'thumbnail'		=> 'left-sidebar.svg',
 								'preset'		=> 'left-sidebar.options',
@@ -86,11 +98,11 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 								'thumbnail'		=> 'none-sidebar.svg',
 								'preset'		=> 'none-sidebar.options',
 							),
-						)
+						),
 					),
 				)
 			);
-		}// __construct end
+		}
 
 		/**
 		 * Panel render.
@@ -161,7 +173,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 		/**
 		 * Get current preset thumbnail
 		 *
-		 * @param  string $thumbnail name
+		 * @param  string $thumbnail name.
 		 * @return bool/string thumbnail uri
 		 *
 		 * @since 1.0.0
@@ -240,7 +252,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 					$file_name = self::get_preset_json( $this->default_settings[ $group ]['presets'][ $preset ]['preset'] );
 
 					$file_content = self::get_contents( $file_name );
-					$file_content = !is_wp_error( $file_content ) ? $file_content : '{}';
+					$file_content = ! is_wp_error( $file_content ) ? $file_content : '{}';
 
 					if ( 'string' !== gettype( $file_content ) ) {
 						wp_send_json( array( 'type' => 'error', 'url' => $query_arg_url ) );

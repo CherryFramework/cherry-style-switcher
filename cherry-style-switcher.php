@@ -248,13 +248,13 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		public static function is_panel_show() {
 
-			if( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table') {
+			if ( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table' ) {
 				return false;
 			}
 
 			if ( ! is_user_logged_in() ) {
 
-				if( 'true' === self::cherry_swither_get_option( 'panel-show', 'false' ) && 'true' === self::cherry_swither_get_option( 'demo-mode', 'false' ) ) {
+				if ( 'true' === self::cherry_swither_get_option( 'panel-show', 'false' ) && 'true' === self::cherry_swither_get_option( 'demo-mode', 'false' ) ) {
 					return true;
 				}
 
@@ -409,7 +409,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @uses   cherry_get_option  use cherry_get_option from Cherry framework if exist
 		 *
 		 * @param  string $name    option name to get.
-		 * @param  mixed $default  default option value.
+		 * @param  mixed  $default  default option value.
 		 * @return mixed           option value
 		 */
 		public static function cherry_swither_get_option( $name, $default = false ) {
