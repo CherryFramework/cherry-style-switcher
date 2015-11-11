@@ -8,101 +8,99 @@
 	CHERRY_API.cherry_preset_swither = {
 		ajaxRequestSuccess: true, // ajax success check
 		ajaxImportPresetRequest: null, // ajax success check
-		active_presets_object: {}, // presets object
-		current_group: '', // current group
-		current_preset: '', // current preset
+		activePresetsObject: {}, // presets object
 		init: function () {
 			var self = this;
 
-			if( CHERRY_API.status.is_ready ){
+			if ( CHERRY_API.status.is_ready ) {
 				self.render();
-			}else{
+			} else {
 				CHERRY_API.variable.$document.on('ready', self.on_ready() );
 			}
 
-			if( CHERRY_API.status.on_load ){
+			if ( CHERRY_API.status.on_load ) {
 				self.render();
-			}else{
+			} else {
 				CHERRY_API.variable.$window.on('load', self.on_load() );
 			}
 		},
 		on_ready: function () {
-			var
-				self = this
-			,	$panel = $('.style-switcher-panel')
-			,	panel_width = $panel.width()
-			,	$preset_list = $('.preset-list li')
-			,	$panel_toggle = $('.panel-toggle', $panel)
-			,	$cover = $('.site-cover')
-			,	$body = $('body')
-			,	is_panel_open = 'false'
-			;
+			var self = this,
+				$panel = $('.style-switcher-panel'),
+				panelWidth = $panel.width(),
+				$presetList = $('.preset-list li'),
+				$panelToggle = $('.panel-toggle', $panel),
+				$cover = $('.site-cover'),
+				$body = $('body'),
+				isPanelOpen = 'false';
 
-			if ( this.is_local_storage_available ){
-				is_panel_open = localStorage.getItem('is_panel_open');
-				panel_width = $panel.width();
+			if ( this.isLocalStorageAvailable ) {
+				isPanelOpen = localStorage.getItem('is_panel_open');
+				panelWidth = $panel.width();
 
-				if( is_panel_open == 'true' ){
+				if ( isPanelOpen == 'true' ) {
 					$panel.addClass('open');
 					$panel.css({'right':0});
 
 					$cover.show();
-					if( $('.style-switcher-panel')[0] ){
+
+					if ( $('.style-switcher-panel')[0] ) {
 						$body.addClass('cover');
 					}
-				}else{
-					$panel.removeClass('open');
-					$panel.css({'right': panel_width * -1 });
 
+				} else {
+					$panel.removeClass('open');
+					$panel.css({'right': panelWidth * -1 });
 					$cover.hide();
 				}
 
-				if( localStorage.getItem( 'active_presets' ) !== 'null' ){
-					self.active_presets_object = $.parseJSON( localStorage.getItem( 'active_presets' ) );
-					self.select_current_presets( self.active_presets_object );
+				if ( localStorage.getItem( 'active_presets' ) !== 'null' ) {
+					self.activePresetsObject = $.parseJSON( localStorage.getItem( 'active_presets' ) );
+					self.selectCurrentPresets( self.activePresetsObject );
 				}
 			}
 
-			$preset_list.on('click', function(){
-				var
-					$this = $(this)
-				,	data_group = $this.parents('.preset-list').data('group')
-				,	data_preset = $this.data('preset')
-				;
+			$presetList.on('click', function(){
+				var $this = $(this),
+					data_group = $this.parents('.preset-list').data('group'),
+					data_preset = $this.data('preset');
 
-				if( !$this.hasClass('coming-soon') ){
-					// update active_presets_object
-					self.active_presets_object[ data_group ] = data_preset;
+				if ( ! $this.hasClass('coming-soon') ) {
+
+					// update activePresetsObject
+					self.activePresetsObject[ data_group ] = data_preset;
 
 					// select current item
-					self.select_current_presets( self.active_presets_object );
+					self.selectCurrentPresets( self.activePresetsObject );
 
 					self.ajax_process_import( data_group, data_preset );
 				}
 			})
 
-			$('.panel-toggle').on('click', function(){
+			$panelToggle.on('click', function() {
 				$panel.toggleClass('open');
-				panel_width = $panel.width();
+				panelWidth = $panel.width();
 
-				if( $panel.hasClass('open') ){
+				if ( $panel.hasClass('open') ) {
 					localStorage.setItem('is_panel_open', 'true' );
 					$cover.fadeIn(300);
 					$body.addClass('cover');
 					$panel.css({'right':0});
-				}else{
+				} else {
 					localStorage.setItem('is_panel_open', 'false' );
 					$cover.fadeOut(300);
-					$panel.css({'right': panel_width * -1 });
+					$panel.css({'right': panelWidth * -1 });
 					$body.removeClass('cover');
 				}
 			});
-			CHERRY_API.variable.$window.on('resize.style_switcher_panel', function(){
-				var panel_width = $panel.width();
-				if( !$panel.hasClass('open') ){
-					$panel.css({'right': panel_width * -1 });
+
+			CHERRY_API.variable.$window.on('resize.style_switcher_panel', function() {
+				var panelWidth = $panel.width();
+				if ( ! $panel.hasClass('open') ) {
+					$panel.css({'right': panelWidth * -1 });
 				}
 			})
+
 			$panel.tooltip({
 				tooltipClass: "custom-tooltip-styling",
 				track: true,
@@ -112,24 +110,21 @@
 			});
 		},
 		on_load: function () {
-			var
-				self = this
-			,	$preloader = $('.site-preloader')
-			,	$spinner = $('.spinner', $preloader)
-			;
+			var self = this,
+				$preloader = $('.site-preloader'),
+				$spinner = $('.spinner', $preloader);
 
 			$spinner.fadeOut();
 			$preloader.delay(200).fadeOut('slow');
 		},
-		select_current_presets: function ( active_presets ) {
+		selectCurrentPresets: function ( active_presets ) {
+
 			// set localStorage active_presets
 			localStorage.setItem( 'active_presets', $.toJSON( active_presets ) );
 
 			for ( var group in active_presets ) {
 				if ( active_presets.hasOwnProperty( group ) ) {
-					var
-						$group = $('[data-group=' + group + ']')
-					;
+					var $group = $('[data-group=' + group + ']');
 
 					$('li', $group).removeClass('active');
 					$('[data-preset=' + active_presets[ group ] + ']', $group).addClass('active');
@@ -137,13 +132,11 @@
 			}
 		},
 		ajax_process_import: function ( group_id, preset_id ) {
-			var
-				$preset_spinner = $('.preset-spinner')
-			;
+			var $preset_spinner = $('.preset-spinner');
 
 			localStorage.setItem('current_preset', preset_id);
 
-			if( this.ajaxImportPresetRequest !== null || !this.ajaxRequestSuccess ){
+			if ( this.ajaxImportPresetRequest !== null || !this.ajaxRequestSuccess ) {
 				this.ajaxImportPresetRequest.abort();
 			}
 
@@ -161,16 +154,15 @@
 					this.ajaxRequestSuccess = false;
 					$preset_spinner.slideDown(300);
 				},
-				success: function(response){
+				success: function( response ) {
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
-
 					document.location.replace( response.url );
 					window.location.reload();
 				},
 				dataType: 'json'
 			});
 		},
-		is_local_storage_available : function(){
+		isLocalStorageAvailable : function(){
 			try {
 				return 'localStorage' in window && window['localStorage'] !== null;
 			} catch (e) {
