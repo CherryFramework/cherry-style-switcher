@@ -7,9 +7,10 @@
 
 (function( $ ) {
 
-	"use strict";
+	'use strict';
 
 	CHERRY_API.utilites.namespace( 'cherry_preset_swither' );
+
 	CHERRY_API.cherry_preset_swither = {
 
 		// Ajax success check
@@ -52,7 +53,7 @@
 				isPanelOpen = localStorage.getItem( 'is_panel_open' );
 				panelWidth = $panel.width();
 
-				if ( isPanelOpen == 'true' ) {
+				if ( 'true' === isPanelOpen ) {
 					$panel.addClass( 'open' );
 					$panel.css({ 'right':0 });
 
@@ -89,7 +90,7 @@
 
 					self.ajaxProcessImport( dataGroup, dataPreset );
 				}
-			})
+			});
 
 			$panelToggle.on( 'click', function() {
 				$panel.toggleClass( 'open' );
@@ -113,14 +114,14 @@
 				if ( ! $panel.hasClass( 'open' ) ) {
 					$panel.css({ 'right': panelWidth * -1 });
 				}
-			})
+			});
 
 			$panel.tooltip({
-				tooltipClass: "custom-tooltip-styling",
+				tooltipClass: 'custom-tooltip-styling',
 				track: true,
-				position: { my: "left+15 center", at: "right center" },
+				position: { my: 'left+15 center', at: 'right center' },
 				show: { duration: 300, delay: 200 },
-				hide: { duration: 0 },
+				hide: { duration: 0 }
 			});
 		},
 
@@ -192,5 +193,6 @@
 			}
 		}
 	}
+
 	CHERRY_API.cherry_preset_swither.init();
 }(jQuery));
