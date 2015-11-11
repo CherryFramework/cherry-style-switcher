@@ -174,7 +174,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 				$current_options = get_option( $settings['id'] );
 				$current_statics = get_option( $settings['id'] . '_statics' );
 
-				if( ! session_id() ) {
+				if ( ! session_id() ) {
 					session_start();
 				}
 
@@ -229,7 +229,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 
 			if ( ! is_user_logged_in() ) {
 
-				if( 'true' === self::cherry_swither_get_option(' demo-mode', 'false' ) ) {
+				if ( 'true' === self::cherry_swither_get_option( 'demo-mode', 'false' ) ) {
 					return true;
 				}
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 
 			if ( ! is_user_logged_in() ) {
 
-				if( 'true' === self::cherry_swither_get_option( 'panel-show', 'false' ) && 'true' === self::cherry_swither_get_option( 'demo-mode', 'false' ) {
+				if( 'true' === self::cherry_swither_get_option( 'panel-show', 'false' ) && 'true' === self::cherry_swither_get_option( 'demo-mode', 'false' ) ) {
 					return true;
 				}
 
@@ -412,7 +412,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		 * @param  mixed $default  default option value.
 		 * @return mixed           option value
 		 */
-		public static function cherry_swither_get_option( $name , $default = false ) {
+		public static function cherry_swither_get_option( $name, $default = false ) {
 
 			if ( function_exists( 'cherry_get_option' ) ) {
 				$result = cherry_get_option( $name , $default );
@@ -434,7 +434,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 			if ( isset( $all_roles ) && ! empty( $all_roles ) ) {
 
 				foreach ( $all_roles as $role => $value ) {
-					$roles[$role] = $value['name'];
+					$roles[ $role ] = $value['name'];
 				}
 			}
 
