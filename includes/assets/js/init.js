@@ -1,103 +1,117 @@
 /**
- * cherry_preset_swither
+ * Preset switcher scripts
+ *
+ * Copyright 2015 Cherry team
+ * Licensed under the MIT license.
  */
-(function($){
+
+(function( $ ) {
+
 	"use strict";
 
-	CHERRY_API.utilites.namespace('cherry_preset_swither');
+	CHERRY_API.utilites.namespace( 'cherry_preset_swither' );
 	CHERRY_API.cherry_preset_swither = {
-		ajaxRequestSuccess: true, // ajax success check
-		ajaxImportPresetRequest: null, // ajax success check
-		activePresetsObject: {}, // presets object
+
+		// Ajax success check
+		ajaxRequestSuccess: true,
+
+		// Ajax request object
+		ajaxImportPresetRequest: null,
+
+		// Presets object
+		activePresetsObject: {},
+
+		// Init script
 		init: function () {
 			var self = this;
 
 			if ( CHERRY_API.status.is_ready ) {
 				self.render();
 			} else {
-				CHERRY_API.variable.$document.on('ready', self.on_ready() );
+				CHERRY_API.variable.$document.on( 'ready', self.on_ready() );
 			}
 
 			if ( CHERRY_API.status.on_load ) {
 				self.render();
 			} else {
-				CHERRY_API.variable.$window.on('load', self.on_load() );
+				CHERRY_API.variable.$window.on( 'load', self.on_load() );
 			}
 		},
+		// Ready event script
 		on_ready: function () {
 			var self = this,
 				$panel = $('.style-switcher-panel'),
 				panelWidth = $panel.width(),
-				$presetList = $('.preset-list li'),
-				$panelToggle = $('.panel-toggle', $panel),
-				$cover = $('.site-cover'),
-				$body = $('body'),
+				$presetList = $( '.preset-list li' ),
+				$panelToggle = $( '.panel-toggle', $panel ),
+				$cover = $( '.site-cover' ),
+				$body = $( 'body' ),
 				isPanelOpen = 'false';
 
 			if ( this.isLocalStorageAvailable ) {
-				isPanelOpen = localStorage.getItem('is_panel_open');
+				isPanelOpen = localStorage.getItem( 'is_panel_open' );
 				panelWidth = $panel.width();
 
 				if ( isPanelOpen == 'true' ) {
-					$panel.addClass('open');
-					$panel.css({'right':0});
+					$panel.addClass( 'open' );
+					$panel.css({ 'right':0 });
 
 					$cover.show();
 
 					if ( $('.style-switcher-panel')[0] ) {
-						$body.addClass('cover');
+						$body.addClass( 'cover' );
 					}
 
 				} else {
-					$panel.removeClass('open');
+					$panel.removeClass( 'open' );
 					$panel.css({'right': panelWidth * -1 });
 					$cover.hide();
 				}
 
-				if ( localStorage.getItem( 'active_presets' ) !== 'null' ) {
+				if ( 'null' !== localStorage.getItem( 'active_presets' ) ) {
 					self.activePresetsObject = $.parseJSON( localStorage.getItem( 'active_presets' ) );
 					self.selectCurrentPresets( self.activePresetsObject );
 				}
 			}
 
-			$presetList.on('click', function(){
-				var $this = $(this),
-					data_group = $this.parents('.preset-list').data('group'),
-					data_preset = $this.data('preset');
+			$presetList.on( 'click', function() {
+				var $this = $( this ),
+					dataGroup = $this.parents('.preset-list').data('group'),
+					dataPreset = $this.data('preset');
 
-				if ( ! $this.hasClass('coming-soon') ) {
+				if ( ! $this.hasClass( 'coming-soon' ) ) {
 
 					// update activePresetsObject
-					self.activePresetsObject[ data_group ] = data_preset;
+					self.activePresetsObject[ dataGroup ] = dataPreset;
 
 					// select current item
 					self.selectCurrentPresets( self.activePresetsObject );
 
-					self.ajax_process_import( data_group, data_preset );
+					self.ajaxProcessImport( dataGroup, dataPreset );
 				}
 			})
 
-			$panelToggle.on('click', function() {
-				$panel.toggleClass('open');
+			$panelToggle.on( 'click', function() {
+				$panel.toggleClass( 'open' );
 				panelWidth = $panel.width();
 
 				if ( $panel.hasClass('open') ) {
-					localStorage.setItem('is_panel_open', 'true' );
+					localStorage.setItem( 'is_panel_open', 'true' );
 					$cover.fadeIn(300);
 					$body.addClass('cover');
-					$panel.css({'right':0});
+					$panel.css({ 'right':0 });
 				} else {
-					localStorage.setItem('is_panel_open', 'false' );
+					localStorage.setItem( 'is_panel_open', 'false' );
 					$cover.fadeOut(300);
-					$panel.css({'right': panelWidth * -1 });
+					$panel.css({ 'right': panelWidth * -1 });
 					$body.removeClass('cover');
 				}
 			});
 
 			CHERRY_API.variable.$window.on('resize.style_switcher_panel', function() {
 				var panelWidth = $panel.width();
-				if ( ! $panel.hasClass('open') ) {
-					$panel.css({'right': panelWidth * -1 });
+				if ( ! $panel.hasClass( 'open' ) ) {
+					$panel.css({ 'right': panelWidth * -1 });
 				}
 			})
 
@@ -109,14 +123,18 @@
 				hide: { duration: 0 },
 			});
 		},
+
+		// Load event script
 		on_load: function () {
 			var self = this,
-				$preloader = $('.site-preloader'),
-				$spinner = $('.spinner', $preloader);
+				$preloader = $( '.site-preloader' ),
+				$spinner = $( '.spinner', $preloader );
 
 			$spinner.fadeOut();
-			$preloader.delay(200).fadeOut('slow');
+			$preloader.delay(200).fadeOut( 'slow' );
 		},
+
+		// Active preset check method
 		selectCurrentPresets: function ( active_presets ) {
 
 			// set localStorage active_presets
@@ -124,19 +142,21 @@
 
 			for ( var group in active_presets ) {
 				if ( active_presets.hasOwnProperty( group ) ) {
-					var $group = $('[data-group=' + group + ']');
+					var $group = $( '[data-group=' + group + ']' );
 
-					$('li', $group).removeClass('active');
-					$('[data-preset=' + active_presets[ group ] + ']', $group).addClass('active');
+					$( 'li', $group ).removeClass( 'active' );
+					$( '[data-preset=' + active_presets[ group ] + ']', $group ).addClass( 'active' );
 				}
 			}
 		},
-		ajax_process_import: function ( group_id, preset_id ) {
-			var $preset_spinner = $('.preset-spinner');
 
-			localStorage.setItem('current_preset', preset_id);
+		// Ajax request function
+		ajaxProcessImport: function ( group_id, preset_id ) {
+			var $preset_spinner = $( '.preset-spinner' );
 
-			if ( this.ajaxImportPresetRequest !== null || !this.ajaxRequestSuccess ) {
+			localStorage.setItem( 'current_preset', preset_id );
+
+			if ( null !== this.ajaxImportPresetRequest || ! this.ajaxRequestSuccess ) {
 				this.ajaxImportPresetRequest.abort();
 			}
 
@@ -147,7 +167,7 @@
 					action: 'cherry_preset_import',
 					group: group_id,
 					preset: preset_id,
-					_wpnonce: jQuery('#preset-import-nonce').val()
+					_wpnonce: jQuery( '#preset-import-nonce' ).val()
 				},
 				cache: false,
 				beforeSend: function(){
@@ -162,6 +182,8 @@
 				dataType: 'json'
 			});
 		},
+
+		// Storage Available check method
 		isLocalStorageAvailable : function(){
 			try {
 				return 'localStorage' in window && window['localStorage'] !== null;
