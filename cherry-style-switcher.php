@@ -248,7 +248,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		 */
 		public static function is_panel_show() {
 
-			if ( isset( $_GET['action'] ) && $_GET['action'] === 'yith-woocompare-view-table' ) {
+			if ( isset( $_GET['action'] ) && 'yith-woocompare-view-table' === $_GET['action'] ) {
 				return false;
 			}
 

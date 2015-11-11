@@ -75,7 +75,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 								'thumbnail'		=> 'boxed.svg',
 								'preset'		=> 'boxed.options',
 							),
-						)
+						),
 					),
 					'sidebar_group' => array(
 						'group_name'	=> __( 'Sidebars', 'cherry-style-switcher' ),
@@ -151,7 +151,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher_Panel' ) ) {
 				$html .= '<div class="panel-toggle"><i class="fa fa-cogs"></i></div>';
 				$html .= apply_filters( 'cherry_style_panel_after', '' );
 
-				//add nonce
+				// add nonce
 				wp_nonce_field( 'cherry_preset_import', 'preset-import-nonce', false );
 			$html .= '</div>';
 			$html .= '<div class="site-cover"></div>';

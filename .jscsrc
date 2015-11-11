@@ -3,7 +3,6 @@
 	"fileExtensions": [ ".js" ],
 	"excludeFiles": [
 		"includes/assets/js/jquery.json.js",
-		"includes/assets/js/cherry-api.js",
-		"includes/assets/js/init.js"
+		"includes/assets/js/cherry-api.js"
 	]
 }
