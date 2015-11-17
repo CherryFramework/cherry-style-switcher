@@ -178,7 +178,6 @@
 				success: function( response ) {
 					$preset_spinner.delay(400).slideUp(300, function(){ this.ajaxRequestSuccess = true; });
 					document.location.replace( response.url );
-					window.location.reload();
 				},
 				dataType: 'json'
 			});
