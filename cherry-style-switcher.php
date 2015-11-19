@@ -87,6 +87,8 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 			add_filter( 'cherry_option_value_source_array', array( $this, 'value_source_array' ) );
 
 			add_filter( 'cherry_static_current_statics', array( $this, 'current_statics' ) );
+
+			add_filter( 'cherry_compiler_static_css', array( $this, 'add_style_to_compiler' ) );
 		}
 
 		/**
@@ -309,6 +311,22 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		}
 
 		/**
+		 * Pass style handle to CSS compiler.
+		 *
+		 * @since 1.0.5
+		 *
+		 * @param array $handles CSS handles to compile.
+		 */
+		function add_style_to_compiler( $handles ) {
+			$handles = array_merge(
+				array( 'cherry-style-switcher' => CHERRY_STYLE_SWITCHER_URI . 'includes/assets/css/style.css' ),
+				$handles
+			);
+
+			return $handles;
+		}
+
+		/**
 		 * Register and enqueue public-facing javascript.
 		 *
 		 * @since 1.0.0
@@ -316,9 +334,9 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 		public function enqueue_scripts() {
 			if ( self::cherry_swither_get_option( 'panel-show', 'false' ) === 'true' ) {
 				wp_enqueue_script( 'jquery-ui-tooltip' );
-				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
-				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
-				wp_enqueue_script( 'cherry-style-switcher-init', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/init.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
+				wp_enqueue_script( 'cherry-api', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/cherry-api.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
+				wp_enqueue_script( 'jquery-json', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/jquery.json.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
+				wp_enqueue_script( 'cherry-style-switcher-init', trailingslashit( CHERRY_STYLE_SWITCHER_URI ) . 'includes/assets/js/init.min.js', array( 'jquery' ), CHERRY_STYLE_SWITCHER_VERSION, true );
 
 				// ajax js object preset_import_ajax
 				wp_localize_script( 'cherry-style-switcher-init', 'preset_import_ajax', array( 'url' => admin_url( 'admin-ajax.php' ) ) );
