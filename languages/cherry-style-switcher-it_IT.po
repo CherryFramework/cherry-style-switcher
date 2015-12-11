@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-style-switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-02 16:44+0200\n"
-"PO-Revision-Date: 2015-11-02 16:44+0200\n"
+"POT-Creation-Date: 2015-12-11 14:48+0200\n"
+"PO-Revision-Date: 2015-12-11 14:48+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: it_IT\n"
@@ -20,106 +20,112 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+#: cherry-style-switcher.php:359 cherry-style-switcher.php:413
 msgid "Style Switcher"
-msgstr ""
+msgstr "Style Switcher"
 
-#: cherry-style-switcher.php:301
+#: cherry-style-switcher.php:362
 msgid "Enable/disable displaying of Style Switcher on site."
-msgstr ""
+msgstr "Abilitare/disabilitare la visualizzazione di Style Switcher sul sito."
 
-#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+#: cherry-style-switcher.php:367 cherry-style-switcher.php:406
 msgid "Enabled"
 msgstr "Abilita"
 
-#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+#: cherry-style-switcher.php:368 cherry-style-switcher.php:407
 msgid "Disabled"
 msgstr "Disabilita"
 
-#: cherry-style-switcher.php:315
+#: cherry-style-switcher.php:376
 msgid "Visible To:"
-msgstr ""
+msgstr "Visibile a:"
 
-#: cherry-style-switcher.php:327
+#: cherry-style-switcher.php:388
 msgid "Custom style CSS"
-msgstr ""
+msgstr "Stile personalizzato CSS"
 
-#: cherry-style-switcher.php:328
+#: cherry-style-switcher.php:389
 msgid "Define style CSS styling."
-msgstr ""
+msgstr "Definire lo stile CSS."
 
-#: cherry-style-switcher.php:337
+#: cherry-style-switcher.php:398
 msgid "Demo mode"
-msgstr ""
+msgstr "Modalità demo"
 
-#: cherry-style-switcher.php:340
+#: cherry-style-switcher.php:401
 msgid ""
 "Enable/disable demo mode. Demo mode is used for not logged users (guests)"
 msgstr ""
+"Abilitare/disabilitare la modalità demo. Modalità demo viene utilizzata per "
+"gli utenti non registrati (ospiti) modalità demo"
 
-#: views/panel.php:43
+#: views/panel.php:64
 msgid "Layouts"
-msgstr ""
+msgstr "Layouts"
 
-#: views/panel.php:46
+#: views/panel.php:67
 msgid "Wide"
-msgstr ""
+msgstr "Largo"
 
-#: views/panel.php:47
+#: views/panel.php:68
 msgid "Select layout pattern for website. Wide layout will fit window width."
 msgstr ""
+"Seleziona modello di layout per il sito web. Ampia disposizione si adatta "
+"alla larghezza della finestra."
 
-#: views/panel.php:52
+#: views/panel.php:73
 msgid "Boxed"
-msgstr ""
+msgstr "Boxed"
 
-#: views/panel.php:53
+#: views/panel.php:74
 msgid "Select layout pattern for website. Boxed layout will have fixed width."
 msgstr ""
+"Seleziona modello di layout per il sito web. Il layout Boxed avrà larghezza "
+"fissa."
 
-#: views/panel.php:60
+#: views/panel.php:81
 msgid "Sidebars"
-msgstr ""
+msgstr "Barre laterali"
 
-#: views/panel.php:63
+#: views/panel.php:84
 msgid "Left sidebar"
 msgstr "Barra laterale Sinistra"
 
-#: views/panel.php:64
+#: views/panel.php:85
 msgid "Page with left sidebar position"
-msgstr ""
+msgstr "Pagina con la posizione sidebar di sinistra"
 
-#: views/panel.php:69
+#: views/panel.php:90
 msgid "Right sidebar"
 msgstr "Barra laterale Destra"
 
-#: views/panel.php:70
+#: views/panel.php:91
 msgid "Page with right sidebar position"
-msgstr ""
+msgstr "Pagina con la posizione barra laterale destra"
 
-#: views/panel.php:75
+#: views/panel.php:96
 msgid "No sidebar"
 msgstr "Barra laterale Assente"
 
-#: views/panel.php:76
+#: views/panel.php:97
 msgid "Page without sidebar"
-msgstr ""
+msgstr "Pagina senza sidebar"
 
-#: views/panel.php:99
+#: views/panel.php:120
 msgid "Applying changes..."
-msgstr ""
+msgstr "L'applicazione delle modifiche ..."
 
-#: views/panel.php:104
+#: views/panel.php:125
 msgid "Theme"
-msgstr ""
+msgstr "Theme"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Invalid request"
-msgstr ""
+msgstr "Richiesta non valida"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Error. Invalid request"
-msgstr ""
+msgstr "Errore. Richiesta non valida"
 
 #~ msgid "Title"
 #~ msgstr "Titolo"

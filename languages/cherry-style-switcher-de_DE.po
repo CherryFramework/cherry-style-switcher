@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-style-switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-02 16:43+0200\n"
-"PO-Revision-Date: 2015-11-02 16:43+0200\n"
+"POT-Creation-Date: 2015-12-11 14:49+0200\n"
+"PO-Revision-Date: 2015-12-11 14:49+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: de_DE\n"
@@ -20,106 +20,112 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+#: cherry-style-switcher.php:359 cherry-style-switcher.php:413
 msgid "Style Switcher"
-msgstr ""
+msgstr "Style-Switcher"
 
-#: cherry-style-switcher.php:301
+#: cherry-style-switcher.php:362
 msgid "Enable/disable displaying of Style Switcher on site."
-msgstr ""
+msgstr "Aktiviere/Deaktiviere Stil Umschalter des Frontends"
 
-#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+#: cherry-style-switcher.php:367 cherry-style-switcher.php:406
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+#: cherry-style-switcher.php:368 cherry-style-switcher.php:407
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: cherry-style-switcher.php:315
+#: cherry-style-switcher.php:376
 msgid "Visible To:"
-msgstr ""
+msgstr "﻿Sichtbar für"
 
-#: cherry-style-switcher.php:327
+#: cherry-style-switcher.php:388
 msgid "Custom style CSS"
-msgstr ""
+msgstr "Benutzerdefiniertes CSS"
 
-#: cherry-style-switcher.php:328
+#: cherry-style-switcher.php:389
 msgid "Define style CSS styling."
-msgstr ""
+msgstr "Definieren Sie Stil-CSS-Styling."
 
-#: cherry-style-switcher.php:337
+#: cherry-style-switcher.php:398
 msgid "Demo mode"
-msgstr ""
+msgstr "Demo-Modus"
 
-#: cherry-style-switcher.php:340
+#: cherry-style-switcher.php:401
 msgid ""
 "Enable/disable demo mode. Demo mode is used for not logged users (guests)"
 msgstr ""
+"Demo-Modus aktivieren/deaktivieren. Demo-Modus wird für nicht angemeldete "
+"Benutzer (Gäste) verwendet."
 
-#: views/panel.php:43
+#: views/panel.php:64
 msgid "Layouts"
-msgstr ""
+msgstr "Layouts"
 
-#: views/panel.php:46
+#: views/panel.php:67
 msgid "Wide"
-msgstr ""
+msgstr "Breite"
 
-#: views/panel.php:47
+#: views/panel.php:68
 msgid "Select layout pattern for website. Wide layout will fit window width."
 msgstr ""
+"Wählen Sie die Layoutmuster für die Website. Breites Layout wird "
+"Fensterbreite angepasst."
 
-#: views/panel.php:52
+#: views/panel.php:73
 msgid "Boxed"
-msgstr ""
+msgstr "Boxed"
 
-#: views/panel.php:53
+#: views/panel.php:74
 msgid "Select layout pattern for website. Boxed layout will have fixed width."
 msgstr ""
+"Wählen Sie die Layoutmuster für die Website. Boxed-Layout hat eine feste "
+"Breite."
 
-#: views/panel.php:60
+#: views/panel.php:81
 msgid "Sidebars"
-msgstr ""
+msgstr "Seitenleisten"
 
-#: views/panel.php:63
+#: views/panel.php:84
 msgid "Left sidebar"
 msgstr "Linke Seitenleiste"
 
-#: views/panel.php:64
+#: views/panel.php:85
 msgid "Page with left sidebar position"
-msgstr ""
+msgstr "Seite mit linker Seitenleiste"
 
-#: views/panel.php:69
+#: views/panel.php:90
 msgid "Right sidebar"
 msgstr "Rechte Seitenleiste"
 
-#: views/panel.php:70
+#: views/panel.php:91
 msgid "Page with right sidebar position"
-msgstr ""
+msgstr "Seite mit rechter Seitenleiste"
 
-#: views/panel.php:75
+#: views/panel.php:96
 msgid "No sidebar"
 msgstr "Keine Seitenleiste"
 
-#: views/panel.php:76
+#: views/panel.php:97
 msgid "Page without sidebar"
-msgstr ""
+msgstr "Seite ohne Seitenleiste"
 
-#: views/panel.php:99
+#: views/panel.php:120
 msgid "Applying changes..."
-msgstr ""
+msgstr "Anwenden von Änderungen ..."
 
-#: views/panel.php:104
+#: views/panel.php:125
 msgid "Theme"
-msgstr ""
+msgstr "Thema "
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Invalid request"
-msgstr ""
+msgstr "Ungültige Anfrage"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Error. Invalid request"
-msgstr ""
+msgstr "Fehler. Ungültige Anfrage"
 
 #~ msgid "Title"
 #~ msgstr "Titel"

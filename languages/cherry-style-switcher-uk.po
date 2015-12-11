@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-style-switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-02 16:44+0200\n"
-"PO-Revision-Date: 2015-11-02 16:44+0200\n"
+"POT-Creation-Date: 2015-12-11 14:47+0200\n"
+"PO-Revision-Date: 2015-12-11 14:47+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: uk\n"
@@ -20,106 +20,112 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+#: cherry-style-switcher.php:359 cherry-style-switcher.php:413
 msgid "Style Switcher"
-msgstr ""
+msgstr "Перемикач Стилів"
 
-#: cherry-style-switcher.php:301
+#: cherry-style-switcher.php:362
 msgid "Enable/disable displaying of Style Switcher on site."
-msgstr ""
+msgstr "Увімкнути/Вимкнути відображення Перемикача Стилів на сайті."
 
-#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+#: cherry-style-switcher.php:367 cherry-style-switcher.php:406
 msgid "Enabled"
 msgstr "Увімкнено"
 
-#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+#: cherry-style-switcher.php:368 cherry-style-switcher.php:407
 msgid "Disabled"
 msgstr "Вимкнено"
 
-#: cherry-style-switcher.php:315
+#: cherry-style-switcher.php:376
 msgid "Visible To:"
-msgstr ""
+msgstr "Видимий для:"
 
-#: cherry-style-switcher.php:327
+#: cherry-style-switcher.php:388
 msgid "Custom style CSS"
-msgstr ""
+msgstr "Власний CSS"
 
-#: cherry-style-switcher.php:328
+#: cherry-style-switcher.php:389
 msgid "Define style CSS styling."
-msgstr ""
+msgstr "Визначити нетипові стилі CSS."
 
-#: cherry-style-switcher.php:337
+#: cherry-style-switcher.php:398
 msgid "Demo mode"
-msgstr ""
+msgstr "Демо-режим"
 
-#: cherry-style-switcher.php:340
+#: cherry-style-switcher.php:401
 msgid ""
 "Enable/disable demo mode. Demo mode is used for not logged users (guests)"
 msgstr ""
+"Увімкнути або вимкнути демо-режим. Демонстраційний режим використовується "
+"для неавторизованих користувачів (гостей)."
 
-#: views/panel.php:43
+#: views/panel.php:64
 msgid "Layouts"
-msgstr ""
+msgstr "Макети"
 
-#: views/panel.php:46
+#: views/panel.php:67
 msgid "Wide"
-msgstr ""
+msgstr "Широкий"
 
-#: views/panel.php:47
+#: views/panel.php:68
 msgid "Select layout pattern for website. Wide layout will fit window width."
 msgstr ""
+"Виберіть шаблон макету сайту. \"Широкий\" макет передбачає, що сайт "
+"заповнюватиме ширину вікна."
 
-#: views/panel.php:52
+#: views/panel.php:73
 msgid "Boxed"
-msgstr ""
+msgstr "Коробковий"
 
-#: views/panel.php:53
+#: views/panel.php:74
 msgid "Select layout pattern for website. Boxed layout will have fixed width."
 msgstr ""
+"Виберіть шаблон макету сайту. \"Коробковий\" макет передбачає, що вміст "
+"сайту матиме фіксовану ширину."
 
-#: views/panel.php:60
+#: views/panel.php:81
 msgid "Sidebars"
-msgstr ""
+msgstr "Бічні панелі"
 
-#: views/panel.php:63
+#: views/panel.php:84
 msgid "Left sidebar"
 msgstr "Ліва бічна панель"
 
-#: views/panel.php:64
+#: views/panel.php:85
 msgid "Page with left sidebar position"
-msgstr ""
+msgstr "Сторінка з лівою бічною панеллю."
 
-#: views/panel.php:69
+#: views/panel.php:90
 msgid "Right sidebar"
 msgstr "Права бічна панель"
 
-#: views/panel.php:70
+#: views/panel.php:91
 msgid "Page with right sidebar position"
-msgstr ""
+msgstr "Сторінка з правою бічною панеллю."
 
-#: views/panel.php:75
+#: views/panel.php:96
 msgid "No sidebar"
 msgstr "Жодної бічної панелі"
 
-#: views/panel.php:76
+#: views/panel.php:97
 msgid "Page without sidebar"
-msgstr ""
+msgstr "Сторінка без бічної панелі"
 
-#: views/panel.php:99
+#: views/panel.php:120
 msgid "Applying changes..."
-msgstr ""
+msgstr "Зберігаємо зміни..."
 
-#: views/panel.php:104
+#: views/panel.php:125
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Invalid request"
-msgstr ""
+msgstr "Невірний запит"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Error. Invalid request"
-msgstr ""
+msgstr "Помилка. Невірний запит"
 
 #~ msgid "Title"
 #~ msgstr "Заголовок"

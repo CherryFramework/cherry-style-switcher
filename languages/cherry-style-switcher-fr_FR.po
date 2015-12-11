@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-style-switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-02 16:44+0200\n"
-"PO-Revision-Date: 2015-11-02 16:44+0200\n"
+"POT-Creation-Date: 2015-12-11 14:48+0200\n"
+"PO-Revision-Date: 2015-12-11 14:48+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: fr_FR\n"
@@ -20,106 +20,111 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cherry-style-switcher.php:298 cherry-style-switcher.php:352
+#: cherry-style-switcher.php:359 cherry-style-switcher.php:413
 msgid "Style Switcher"
-msgstr ""
+msgstr "Outil de changement de styles"
 
-#: cherry-style-switcher.php:301
+#: cherry-style-switcher.php:362
 msgid "Enable/disable displaying of Style Switcher on site."
 msgstr ""
+"Activer/désactiver l'affichage d'outil de changement de styles sur le site."
 
-#: cherry-style-switcher.php:306 cherry-style-switcher.php:345
+#: cherry-style-switcher.php:367 cherry-style-switcher.php:406
 msgid "Enabled"
 msgstr "Activé"
 
-#: cherry-style-switcher.php:307 cherry-style-switcher.php:346
+#: cherry-style-switcher.php:368 cherry-style-switcher.php:407
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: cherry-style-switcher.php:315
+#: cherry-style-switcher.php:376
 msgid "Visible To:"
-msgstr ""
+msgstr "Visible à:"
 
-#: cherry-style-switcher.php:327
+#: cherry-style-switcher.php:388
 msgid "Custom style CSS"
-msgstr ""
+msgstr "Style CSS personnalisé "
 
-#: cherry-style-switcher.php:328
+#: cherry-style-switcher.php:389
 msgid "Define style CSS styling."
-msgstr ""
+msgstr "Définir les styles CSS."
 
-#: cherry-style-switcher.php:337
+#: cherry-style-switcher.php:398
 msgid "Demo mode"
-msgstr ""
+msgstr "Mode de démonstration"
 
-#: cherry-style-switcher.php:340
+#: cherry-style-switcher.php:401
 msgid ""
 "Enable/disable demo mode. Demo mode is used for not logged users (guests)"
 msgstr ""
+"Activer/désactiver le mode de demonstration. Le mode de demonstration est "
+"utilisé pour les utilisateurs qui ne se sont pas connectés (invités)"
 
-#: views/panel.php:43
+#: views/panel.php:64
 msgid "Layouts"
-msgstr ""
+msgstr "Mises en page"
 
-#: views/panel.php:46
+#: views/panel.php:67
 msgid "Wide"
-msgstr ""
+msgstr "Large"
 
-#: views/panel.php:47
+#: views/panel.php:68
 msgid "Select layout pattern for website. Wide layout will fit window width."
-msgstr ""
+msgstr "Sélectionnez la mise en page pour le site web. Large disposition "
 
-#: views/panel.php:52
+#: views/panel.php:73
 msgid "Boxed"
-msgstr ""
+msgstr "Encadré"
 
-#: views/panel.php:53
+#: views/panel.php:74
 msgid "Select layout pattern for website. Boxed layout will have fixed width."
 msgstr ""
+"Sélectionnez le modèle de disposition pour le site web. Présentation en "
+"boîte sera la largeur fixe."
 
-#: views/panel.php:60
+#: views/panel.php:81
 msgid "Sidebars"
-msgstr ""
+msgstr "Barres latérales"
 
-#: views/panel.php:63
+#: views/panel.php:84
 msgid "Left sidebar"
 msgstr "Barre latérale gauche"
 
-#: views/panel.php:64
+#: views/panel.php:85
 msgid "Page with left sidebar position"
-msgstr ""
+msgstr "Page avec la barre latérale gauche"
 
-#: views/panel.php:69
+#: views/panel.php:90
 msgid "Right sidebar"
 msgstr "Barre latérale droite"
 
-#: views/panel.php:70
+#: views/panel.php:91
 msgid "Page with right sidebar position"
-msgstr ""
+msgstr "Page avec la barre latérale droite"
 
-#: views/panel.php:75
+#: views/panel.php:96
 msgid "No sidebar"
 msgstr "Sans barre latérale"
 
-#: views/panel.php:76
+#: views/panel.php:97
 msgid "Page without sidebar"
-msgstr ""
+msgstr "Page sans barre latérale"
 
-#: views/panel.php:99
+#: views/panel.php:120
 msgid "Applying changes..."
-msgstr ""
+msgstr "Application des modifications..."
 
-#: views/panel.php:104
+#: views/panel.php:125
 msgid "Theme"
-msgstr ""
+msgstr "Thème "
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Invalid request"
-msgstr ""
+msgstr "Requête invalide"
 
-#: views/panel.php:216
+#: views/panel.php:248
 msgid "Error. Invalid request"
-msgstr ""
+msgstr "Erreur. Requête invalide"
 
 #~ msgid "Title"
 #~ msgstr "Titre"
