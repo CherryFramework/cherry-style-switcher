@@ -80,7 +80,7 @@ if ( ! class_exists( 'Cherry_Style_Switcher' ) ) {
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
 			// Display panel
-			add_action( 'wp_head', array( $this, 'display_panel' ) );
+			add_action( 'wp_footer', array( $this, 'display_panel' ) );
 
 			add_filter( 'cherry_defaults_settings', array( $this, 'add_cherry_options' ) );
 
